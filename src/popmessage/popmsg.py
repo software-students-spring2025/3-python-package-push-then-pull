@@ -45,5 +45,6 @@ def displayPopup():
     MyPopup().run()
 
 if __name__ == '__main__':
+    # Example popup window
     setProperties("Hello, World!", "purple", (1, 0, 0, 1), "Times New Roman", 100)
     displayPopup()
