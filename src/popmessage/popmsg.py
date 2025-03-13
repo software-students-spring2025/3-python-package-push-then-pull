@@ -4,8 +4,14 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
 
 class PopupMessage(App):
+    POPUP_TYPE_REGULAR = 0
+    POPUP_TYPE_TIMER = 1
+    POPUP_TYPE_SUCCESS_FAIL = 2
+    POPUP_TYPE_RANDOM = 3
+
     def __init__(self):
         super().__init__()
+        self._type = self.POPUP_TYPE_REGULAR
         # Set the default properties of the pop-up message window
         self._setProperties("Default Message", "white", "black", 75, 0)
 
@@ -19,7 +25,20 @@ class PopupMessage(App):
         self._fontSize = fontSize
         self._timerDuration = timerDuration
 
-    
+    def build(self):
+            """
+            Kivy's abstract method that every child class must implement 
+            and gets automatically invoked after App.run() is called.
+            """ 
+            if self._type == PopupMessage.POPUP_TYPE_REGULAR:
+                return self._createPopup()
+            elif self._type == PopupMessage.POPUP_TYPE_TIMER:
+                return self._createTimerPopup()
+            elif self._type == PopupMessage.POPUP_TYPE_SUCCESS_FAIL:
+                return self._createSFPopup()
+            elif self._type == PopupMessage.POPUP_TYPE_RANDOM:
+                return self._createRandomPopup()
+            
     def _createPopup(self):
         """
         Protected method: Create the pop-up message window using the configured properties
@@ -47,15 +66,31 @@ class PopupMessage(App):
         if timerDuration is None:
             timerDuration = self._timerDuration
         
+        self._type = PopupMessage.POPUP_TYPE_REGULAR
         self._setProperties(msg, bgColor, fontColor, fontSize, timerDuration)
         self.run()
 
-    def build(self):
-        """
-        Kivy's abstract method that every child class must implement 
-        and gets automatically invoked after App.run() is called.
-        """ 
-        return self._createPopup()
+    # Add code to the following functions
+    def _createTimerPopup(self):
+        pass
+    
+    def displayTimerPopup(self):
+        self._type = PopupMessage.POPUP_TYPE_TIMER
+        self.run()
+
+    def _createSFPopup(self):
+        pass
+
+    def displaySFPopup(self):
+        self._type = PopupMessage.POPUP_TYPE_SUCCESS_FAIL
+        self.run()
+
+    def _createRandomPopup(self):
+        pass
+
+    def displayRandomPopup(self):
+        self._type = PopupMessage.POPUP_TYPE_RANDOM
+        self.run()
 
 if __name__ == '__main__':
     # Example1 default pop-up message window
