@@ -15,6 +15,24 @@ class PopupMessage(App):
         # Set the default properties of the pop-up message window
         self._setProperties("Default Message", "white", "black", 75, 0)
 
+        # List of derogatory comments for random selection when code is unsuccessful
+        self.derogatory_comments = [
+            "You suck at coding!",
+            "Better luck next time!",
+            "Is that even a real error?",
+            "Wow, that’s a new level of failure.",
+            "You’re really bad at this, huh?"
+        ]
+
+        # List of good comments for random selection when code is successful
+        self.good_comments = [
+            "Great job, you're doing awesome!",
+            "Keep up the excellent work!",
+            "You're a coding wizard!",
+            "Nice work, you're on the right track!",
+            "Fantastic effort, keep going!"
+        ]
+
     def _setProperties(self, msg, bgColor, fontColor, fontSize, timerDuration):
         """
         Protected method: Sets all pop-up message window properties
