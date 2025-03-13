@@ -142,4 +142,6 @@ if __name__ == '__main__':
     #Example4 debug succes/error message test
     myPopup4 = PopupMessage()
     myPopup4.displaySFPopup(lambda: print("Code ran successfully!"))
+    myPopup4.displaySFPopup(lambda: 5 + 5)
     myPopup4.displaySFPopup(lambda: print(hello))
+    myPopup4.displaySFPopup(lambda: 1 / 0)
