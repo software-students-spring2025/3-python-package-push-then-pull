@@ -2,6 +2,7 @@ from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
+import random
 
 class PopupMessage(App):
     POPUP_TYPE_REGULAR = 0
@@ -21,7 +22,9 @@ class PopupMessage(App):
             "Better luck next time!",
             "Is that even a real error?",
             "Wow, that’s a new level of failure.",
-            "You’re really bad at this, huh?"
+            "You’re really bad at this, huh?",
+            "Do you even have a computer science degree?",
+            "Who let you touch a computer?"
         ]
 
         # List of good comments for random selection when code is successful
@@ -30,7 +33,9 @@ class PopupMessage(App):
             "Keep up the excellent work!",
             "You're a coding wizard!",
             "Nice work, you're on the right track!",
-            "Fantastic effort, keep going!"
+            "Fantastic effort, keep going!",
+            "Someone was a straight A student!",
+            "I'm proud of you!"
         ]
 
     def _setProperties(self, msg, bgColor, fontColor, fontSize, timerDuration):
@@ -97,10 +102,21 @@ class PopupMessage(App):
         self.run()
 
     def _createSFPopup(self):
-        pass
+        return self._createPopup()
 
-    def displaySFPopup(self):
+    def displaySFPopup(self, code_to_execute):
+        try:
+            code_to_execute()
+            # Sucessful code message
+            msg = random.choice(self.good_comments)
+            bgColor = "green" 
+        except Exception as e:
+            # Error Message
+            msg = random.choice(self.derogatory_comments)
+            bgColor = "red"
+        
         self._type = PopupMessage.POPUP_TYPE_SUCCESS_FAIL
+        self._setProperties(msg, bgColor, "white", 50, 0)
         self.run()
 
     def _createRandomPopup(self):
@@ -122,3 +138,8 @@ if __name__ == '__main__':
     # Example3 user defined pop-up message window
     myPopup3 = PopupMessage()
     myPopup3.displayPopup(msg="foobar", bgColor="magenta", fontColor="purple")
+
+    #Example4 debug succes/error message test
+    myPopup4 = PopupMessage()
+    myPopup4.displaySFPopup(lambda: print("Code ran successfully!"))
+    myPopup4.displaySFPopup(lambda: print(hello))
