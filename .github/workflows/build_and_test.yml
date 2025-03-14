@@ -1,16 +1,12 @@
-name: Run All Tests
-on:
-  push:
-    branches: [create_workflows]
-
-
-jobs: 
-  test_and_build:
-    name: Use pre-built setup Ubuntu
+name: CI / CD
+on: [push]
+jobs:
+  build:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     strategy:
       matrix:
-        python-version: ["3.11", "3.13"]
+        python-version: ["3.9", "3.11"]
     steps:
       - uses: actions/checkout@v4
       - name: Install Python, pipenv and Pipfile packages
@@ -24,10 +20,10 @@ jobs:
         run: |
           pipenv install pytest
           pipenv --venv
-          pipenv run python -m pytest 2>&1 
+          pipenv run python -m pytest
 
   build_and_upload:
-    needs: [test_and_build]
+    needs: [build]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
