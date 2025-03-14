@@ -39,7 +39,8 @@ jobs:
           pipenv --venv
       - name: Run unit tests
         run: |
-          pipenv run python -m pytest
+          pipenv install pytest
+          pipenv run -v python -m pytest
       
   test_and_build:
     needs: [manual_test_and_build]
