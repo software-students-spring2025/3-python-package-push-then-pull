@@ -10,10 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - id: detect-python
-        name: Detect Python
-        run: ${{github.action_path}}/detect-python.bash "${{ github.workspace }}" "3.11"
-        shell: bash
       
       - id: setup-python
         name: Setup Python
