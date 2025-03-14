@@ -16,6 +16,9 @@ jobs:
         uses: kojoru/prepare-pipenv@v1
         with:
           python-version: ${{ matrix.python-version }}
+      - name: Regenerate Pipfile.lock
+        run: |
+          pipenv lock
       - name: Turn on 'editable' mode, install dependencies
         run: |
           pipenv install -e .
