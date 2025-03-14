@@ -64,7 +64,7 @@ jobs:
         run: |
           pipenv --venv
       - name: Run unit tests
-        run: |
+        run: | 
           pipenv run -v python -m pytest
 
   build_and_upload:
