@@ -37,11 +37,11 @@ jobs:
       - name: Check venv information
         run: |
           pipenv --venv
-          ls
+          cat Pipfile
       - name: Run unit tests
         run: |
           pipenv install -e .
-          pipenv install pytest kivy kivy-examples popmessage build 
+          pipenv install pytest kivy kivy-examples build 
           pipenv run -v python -m pytest
       
   test_and_build:
