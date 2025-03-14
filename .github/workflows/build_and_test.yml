@@ -1,0 +1,37 @@
+name: Run All Tests
+on:
+  push:
+    branches: [create_workflows]
+
+jobs:
+  test_and_build:
+    name: Run all unit tests and build the package
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Python, pipenv and Pipfile packages
+        uses: kojoru/prepare-pipenv@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Turn on 'editable' mode, install dependencies
+        run: |
+          pipenv install -e .
+      - name: Check venv information
+        run: |
+          pipenv --venv
+      - name: Run unit tests
+        run: |
+          pipenv run python -m pytest
+  build_and_upload:
+    needs: [test_and_build]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pass
+        run: |
+          echo "hello world"
+          
+    
