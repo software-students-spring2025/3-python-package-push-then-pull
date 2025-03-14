@@ -37,6 +37,11 @@ jobs:
       - name: Check venv information
         run: |
           pipenv --venv
+          echo "*******************"
+          pipenv graph
+          echo "*****************************"
+          pipenv check
+          echo "***************************"
       - name: Run unit tests
         run: |
           pipenv run python -m pytest
