@@ -3,8 +3,40 @@ on:
   push:
     branches: [create_workflows]
 
+
 jobs:
+  manual_test_and_build:
+    name: Run all unit tests and build the package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: detect-python
+        name: Detect Python
+        run: ${{github.action_path}}/detect-python.bash "${{ github.workspace }}" "3.11"
+        shell: bash
+      
+      - id: setup-python
+        name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: 'pipenv'
+
+      - name: Install pipenv
+        run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
+        shell: bash
+
+      - name: Regen pipfile.lock
+        run: pipenv lock
+        shell: bash
+
+      - name: Sync Pipfile
+        run: pipenv sync --dev --python 3.11
+        shell: bash
+        working-directory: ${{ github.workspace }}
+      
   test_and_build:
+    needs: [manual_test_and_build]
     name: Run all unit tests and build the package
     runs-on: ubuntu-latest
     strategy:
@@ -28,6 +60,7 @@ jobs:
       - name: Run unit tests
         run: |
           pipenv run python -m pytest
+
   build_and_upload:
     needs: [test_and_build]
     runs-on: ubuntu-latest
