@@ -5,9 +5,9 @@ on:
 
 
 jobs: 
-  test_and_build_2:
-    name: Use pre-built setup Win
-    runs-on: windows-latest
+  test_and_build:
+    name: Use pre-built setup Ubuntu
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: ["3.11", "3.13"]
@@ -30,9 +30,9 @@ jobs:
         run: | 
           pipenv install pytest
           pipenv run -v python -m pytest
-
+  
   build_and_upload:
-    needs: [test_and_build_2]
+    needs: [test_and_build]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
