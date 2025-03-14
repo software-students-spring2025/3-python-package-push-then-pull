@@ -1,12 +1,6 @@
 import pytest
-#from ..src.popmessage.popmsg import *
 
-
-# python -m build
-# pip install dist/popmessage-0.0.1-py3-none-any.whl
-
-import popmessage
-
+from popmessage import popmsg
 
 class Tests:
     #
