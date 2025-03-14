@@ -4,43 +4,7 @@ on:
     branches: [create_workflows]
 
 
-jobs:
-  manual_test_and_build:
-    name: Run all unit tests and build the package
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      
-      - id: setup-python
-        name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pipenv'
-
-      - name: Install pipenv
-        run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
-        shell: bash
-
-      - name: Regen pipfile.lock
-        run: pipenv lock
-        shell: bash
-
-  
-      
-      - name: Turn on 'editable' mode, install dependencies
-        run: |
-          pipenv install -e .
-      - name: Check venv information
-        run: |
-          pipenv --venv
-          cat Pipfile
-      - name: Run unit tests
-        run: |
-          pipenv install -e .
-          pipenv install pytest kivy kivy-examples build 
-          pipenv run -v python -m pytest
-      
+jobs: 
   test_and_build:
     name: Use pre-built setup Ubuntu
     runs-on: ubuntu-latest
@@ -69,6 +33,7 @@ jobs:
 
   test_and_build_2:
     name: Use pre-built setup Win
+    needs: [test_and_build]
     runs-on: windows-latest
     strategy:
       matrix:
@@ -94,7 +59,7 @@ jobs:
           pipenv run -v python -m pytest
 
   build_and_upload:
-    needs: [test_and_build]
+    needs: [test_and_build_2]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
