@@ -42,7 +42,7 @@ jobs:
           pipenv run -v python -m pytest
       
   test_and_build:
-    name: Use pre-built setup
+    name: Use pre-built setup Ubuntu
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -68,7 +68,7 @@ jobs:
           pipenv run -v python -m pytest
 
   test_and_build_2:
-    name: Use pre-built setup
+    name: Use pre-built setup Win
     runs-on: windows-latest
     strategy:
       matrix:
