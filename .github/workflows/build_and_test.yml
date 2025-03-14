@@ -31,6 +31,16 @@ jobs:
         shell: bash
         working-directory: ${{ github.workspace }}
       
+      - name: Turn on 'editable' mode, install dependencies
+        run: |
+          pipenv install -e .
+      - name: Check venv information
+        run: |
+          pipenv --venv
+      - name: Run unit tests
+        run: |
+          pipenv run python -m pytest
+      
   test_and_build:
     needs: [manual_test_and_build]
     name: Run all unit tests and build the package
