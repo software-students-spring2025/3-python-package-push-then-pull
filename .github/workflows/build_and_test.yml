@@ -24,7 +24,7 @@ jobs:
         run: |
           pipenv install pytest
           pipenv --venv
-          pipenv run python -m pytest
+          pipenv run python -m pytest 2>&1 
 
   build_and_upload:
     needs: [test_and_build]
