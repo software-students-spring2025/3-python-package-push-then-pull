@@ -8,6 +8,7 @@ pytest = "*"
 kivy = {extras = ["base"], version = "*"}
 kivy-examples = "*"
 build = "*"
+popmessage = {file = ".", editable = true}
 
 [dev-packages]
 pytest = "*"
