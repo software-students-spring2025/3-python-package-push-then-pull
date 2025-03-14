@@ -7,11 +7,10 @@ name = "pypi"
 pytest = "*"
 kivy = {extras = ["base"], version = "*"}
 kivy-examples = "*"
-pytest = "*"
 build = "*"
 
 [dev-packages]
 pytest = "*"
 
 [requires]
-python_version = "3.13"
+python_version = "3"
