@@ -15,7 +15,7 @@ jobs:
         name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.11'
           cache: 'pipenv'
 
       - name: Install pipenv
@@ -37,9 +37,11 @@ jobs:
       - name: Check venv information
         run: |
           pipenv --venv
+          ls
       - name: Run unit tests
         run: |
-          pipenv install pytest
+          pipenv install -e .
+          pipenv install pytest kivy kivy-examples popmessage build 
           pipenv run -v python -m pytest
       
   test_and_build:
