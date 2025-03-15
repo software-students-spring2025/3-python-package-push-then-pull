@@ -6,24 +6,25 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        python-version: ["3.10", "3.9"]
+        python-version: ["3.9", "3.10"]
     steps:
       - uses: actions/checkout@v4
-
       - name: Install pipenv
         run: pip install --upgrade pipenv
       - name: Install Python, pipenv, and Pipfile packages
         uses: kojoru/prepare-pipenv@v1
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Turn on 'editable' mode
+      - name: Debug Information
         run: |
-          pipenv install -e .
-      - name: Test with pytest
-        run: |
-          pipenv install pytest
+          python --version
+          pip --version
           pipenv --venv
-          pipenv run python -m pytest -v
+          pipenv graph
+      - name: Install dependencies
+        run: pipenv install
+      - name: Test with pytest
+        run: pipenv run pytest -v
 
   build_and_upload:
     needs: [build]
@@ -33,5 +34,6 @@ jobs:
       - name: Pass
         run: |
           echo "hello world"
+
           
     
