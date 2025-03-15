@@ -21,8 +21,18 @@ jobs:
           pip --version
           pipenv --venv
           pipenv graph
+          
+      - name: Remove old virtualenv
+          run: pipenv --rm || true
       - name: Install dependencies
-        run: pipenv install
+          run: pipenv install --dev
+      - name: Check Python Version
+          run: python --version
+      - name: Check pipenv version
+          run: pipenv --version
+      - name: List installed packages
+          run: pipenv lock --requirements
+
       - name: Install pytest
         run: pipenv install pytest
       - name: Test with pytest
