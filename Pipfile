@@ -4,11 +4,11 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-pytest = "*"
 kivy = {extras = ["base"], version = "*"}
 kivy-examples = "*"
 build = "*"
 popmessage = {file = ".", editable = true}
+
 
 [dev-packages]
 pytest = "*"
