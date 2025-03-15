@@ -19,8 +19,8 @@ jobs:
         run: |
           python --version
           pip --version
-          pipenv --venv
           pipenv graph
+          
       - name: Check virtual environment
           run: pipenv --venv
 
