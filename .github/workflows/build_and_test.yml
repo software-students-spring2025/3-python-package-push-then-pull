@@ -14,17 +14,24 @@ jobs:
       - name: Install Python, pipenv, and Pipfile packages
         uses: kojoru/prepare-pipenv@v1
         with:
-          python-version: ${{ matrix.python-version }}
+          python-version: "3.10"
       - name: Debug Information
         run: |
           python --version
           pip --version
           pipenv --venv
           pipenv graph
+      - name: Check virtual environment
+          run: pipenv --venv
+
       - name: Install dependencies
-        run: pipenv install
+          run: pipenv install
+
+        - name: Install pytest
+          run: pipenv install pytest
+
       - name: Test with pytest
-        run: pipenv run pytest -v
+          run: pipenv run pytest -v
 
   build_and_upload:
     needs: [build]
