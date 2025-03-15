@@ -21,9 +21,6 @@ jobs:
           pip --version
           pipenv --venv
           pipenv graph
-  
-      - name: Install dependencies
-          run: pipenv install
 
         - name: Install pytest
           run: pipenv install pytest
