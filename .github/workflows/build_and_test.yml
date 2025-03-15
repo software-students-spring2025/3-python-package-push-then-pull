@@ -21,16 +21,10 @@ jobs:
           pip --version
           pipenv --venv
           pipenv graph
-
-      - name: Check virtual environment
-          run: pipenv --venv
-
       - name: Install dependencies
-          run: pipenv install
-
-        - name: Install pytest
-          run: pipenv install pytest
-
+        run: pipenv install
+      - name: Install pytest
+        run: pipenv install pytest
       - name: Test with pytest
         run: pipenv run pytest -v
 
@@ -42,6 +36,3 @@ jobs:
       - name: Pass
         run: |
           echo "hello world"
-
-          
-    
