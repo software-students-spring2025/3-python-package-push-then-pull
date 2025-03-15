@@ -34,11 +34,10 @@ jobs:
 
       - name: Install pytest
         run: pipenv install pytest
-        
+
       - name: Activate virtual environment and test with pytest
         run: |
-          pipenv shell
-          pytest -v
+          pipenv run pytest -v
       
 
   build_and_upload:
