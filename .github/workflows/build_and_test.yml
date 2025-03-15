@@ -30,8 +30,7 @@ jobs:
         run: python --version
       - name: Check pipenv version
         run: pipenv --version
-      - name: List installed packages
-        run: pipenv lock --requirements > requirements.txt
+      
 
       - name: Install pytest
         run: pipenv install pytest
