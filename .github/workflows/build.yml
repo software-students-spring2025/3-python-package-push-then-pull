@@ -1,0 +1,46 @@
+name: CI / CD
+on: [push] # TO CHANGE: Should be on pull request
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        python-version: ["3.10"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Python, pipenv and Pipfile packages
+        uses: kojoru/prepare-pipenv@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install Kivy package
+        run: |
+          pipenv install "kivy[base]"
+      - name: Turn on 'editable' mode
+        run: |
+          pipenv install -e .
+      - name: Test with pytest
+        run: |
+          pipenv install pytest
+          pipenv --venv
+          pipenv run python -m pytest
+  deliver:
+    needs: [build]
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pass
+        run: |
+          echo "hello world"
+      # - name: Install Python, pipenv and Pipfile packages
+      #   uses: kojoru/prepare-pipenv@v1
+      # - name: Build package
+      #   run: |
+      #     pipenv install build
+      #     pipenv run python -m build .
+      # - name: Publish to PyPI test server
+      #   uses: pypa/gh-action-pypi-publish@release/v1
+      #   with:
+      #     password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+      #     repository-url: https://test.pypi.org/legacy/
