@@ -119,7 +119,15 @@ class PopupMessage(App):
         self._setProperties(msg, bgColor, "white", 50, 0)
         self.run()
 
+    # Creates a popup with a randomly chosen message and sound
     def _createRandomPopup(self):
+        messages = self.derogatory_comments + self.good_comments
+        msg = random.choice(messages)
+        # random rgb values for colors, alpha(opaqueness) set to 1
+        bgColor = (random.random(), random.random(), random.random(), 1)
+        fontColor = (random.random(), random.random(), random.random(), 1)
+        fontSize = random.randint(30, 80)
+        self._setProperties(msg, bgColor, fontColor, fontSize, 0)
         pass
 
     def displayRandomPopup(self):
