@@ -7,17 +7,17 @@ name = "popmessage"
 version = "0.0.1"
 authors = [
   { name="Maya Humston", email="mayahumston@gmail.com" },
-  { name="Example Author", email="author@example.com" },
+  { name="Jessica Chen", email="jhc10024@nyu.edu" },
   { name="Example Author", email="author@example.com" },
   { name="Example Author", email="author@example.com" },
 ]
 description = "A package that allows developers to create popup messages to aid in debugging and add some spice into their coding process."
 readme = "README.md"
+keywords = ["popup", "debugging", "notifications", "GUI", "Kivy"]
 license = {file = "LICENSE"}
 requires-python = ">=3.10"
 dependencies = [
   "kivy[base]",
-  "kivy_examples",
 ]
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -25,7 +25,11 @@ classifiers = [
     "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
 ]
 
+[project.optional-dependencies]
+dev = ["pytest"]
+
 [project.urls]
 Homepage = "https://github.com/software-students-spring2025/3-python-package-push-then-pull/"
+Repository = "https://github.com/software-students-spring2025/3-python-package-push-then-pull.git"
 Issues = "https://github.com/software-students-spring2025/3-python-package-push-then-pull/issues"
 
