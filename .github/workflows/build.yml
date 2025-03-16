@@ -38,7 +38,7 @@ jobs:
         run: pipenv install bumpver
 
       - name: Bump version (patch)
-        run: bumpver update --patch
+        run: pipenv run bumpver update --patch
 
       - name: Commit version bump
         run: |
