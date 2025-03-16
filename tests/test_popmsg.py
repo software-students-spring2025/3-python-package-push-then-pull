@@ -1,7 +1,4 @@
 import pytest
-from kivy.core.window import Window
-from kivy.uix.label import Label
-from kivy.uix.boxlayout import BoxLayout
 from src.popmessage import popmsg
 
 class Tests:
