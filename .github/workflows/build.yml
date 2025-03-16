@@ -35,7 +35,7 @@ jobs:
         uses: kojoru/prepare-pipenv@v1
 
       - name: Install bumpver
-        run: pip install bumpver
+        run: pipenv install bumpver
 
       - name: Bump version (patch)
         run: bumpver update --patch
