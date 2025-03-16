@@ -30,17 +30,31 @@ jobs:
     timeout-minutes: 5
     steps:
       - uses: actions/checkout@v4
-      - name: Pass
+
+      - name: Install Python, pipenv and Pipfile packages
+        uses: kojoru/prepare-pipenv@v1
+
+      - name: Install bumpver
+        run: pip install bumpver
+
+      - name: Bump version (patch)
+        run: bumpver update --patch
+
+      - name: Commit version bump
         run: |
-          echo "hello world"
-      # - name: Install Python, pipenv and Pipfile packages
-      #   uses: kojoru/prepare-pipenv@v1
-      # - name: Build package
-      #   run: |
-      #     pipenv install build
-      #     pipenv run python -m build .
-      # - name: Publish to PyPI test server
-      #   uses: pypa/gh-action-pypi-publish@release/v1
-      #   with:
-      #     password: ${{ secrets.TEST_PYPI_API_TOKEN }}
-      #     repository-url: https://test.pypi.org/legacy/
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+          git add .
+          git commit -m "Bump version [skip ci]" || echo "No changes to commit"
+          git push origin main || echo "No changes to push"
+
+      - name: Build package
+        run: |
+          pipenv install build
+          pipenv run python -m build .
+
+      - name: Publish to PyPI test server
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          password: ${{ secrets.TEST_PYPI_API_TOKEN }}
+          repository-url: https://test.pypi.org/legacy/

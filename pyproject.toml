@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "popmessage"
-version = "0.0.1"
+version = "0.0.1"  # bumpver will update this automatically
 authors = [
   { name="Maya Humston", email="mayahumston@gmail.com" },
   { name="Jessica Chen", email="jhc10024@nyu.edu" },
@@ -29,7 +29,17 @@ classifiers = [
 dev = ["pytest"]
 
 [project.urls]
-Homepage = "https://github.com/software-students-spring2025/3-python-package-push-then-pull/"
-Repository = "https://github.com/software-students-spring2025/3-python-package-push-then-pull.git"
+Repository = "https://github.com/software-students-spring2025/3-python-package-push-then-pull/"
 Issues = "https://github.com/software-students-spring2025/3-python-package-push-then-pull/issues"
 
+[bumpver]
+current_version = "0.0.1"
+version_pattern = "MAJOR.MINOR.PATCH"
+
+[bumpver.file_patterns]
+"pyproject.toml" = [
+    '^version = "{version}"$',
+]
+"src/popmessage/__init__.py" = [
+    '^__version__ = "{version}"$',
+]
