@@ -4,6 +4,8 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
 from kivy.core.audio import SoundLoader
 import random
+import math
+import time
 import os
 
 class PopupMessage(App):
@@ -105,9 +107,34 @@ class PopupMessage(App):
 
     # Add code to the following functions
     def _createTimerPopup(self):
-        pass
+        return self._createPopup()
     
-    def displayTimerPopup(self):
+    def displayTimerPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None, timerDuration=None):
+        
+        # Use default values if parameters are not provided
+        if msg is None:
+            msg = self._message
+        if bgColor is None:
+            bgColor = self._bgColor
+        if fontColor is None:
+            fontColor = self._fontColor
+        if fontSize is None:
+            fontSize = self._fontSize
+        if timerDuration is None:
+            seconds = random.randrange(0, 360)
+            print("random time ", seconds)
+        else:
+            seconds = math.floor(timerDuration*60)    
+
+        # type checking?
+        if not isinstance(msg, str):
+            raise TypeError("Custom message must be of type String")
+        
+        self._setProperties(msg, bgColor, fontColor, fontSize, seconds)
+
+        
+        time.sleep(seconds)
+
         self._type = PopupMessage.POPUP_TYPE_TIMER
         self.run()
 
