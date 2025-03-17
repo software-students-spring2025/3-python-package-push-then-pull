@@ -2,9 +2,11 @@ from kivy.app import App
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
+from kivy.core.audio import SoundLoader
 import random
 
 class PopupMessage(App):
+    # Static class variables
     POPUP_TYPE_REGULAR = 0
     POPUP_TYPE_TIMER = 1
     POPUP_TYPE_SUCCESS_FAIL = 2
@@ -36,6 +38,12 @@ class PopupMessage(App):
             "Fantastic effort, keep going!",
             "Someone was a straight A student!",
             "I'm proud of you!"
+        ]
+
+        # List of sounds for random selection when _createRandomPopup is called
+        self.sounds = [
+            "sounds/oh-brother-this-guy-stinks.mp3"
+            "sounds/yippeeeeeeeeeeeeee.mp3"
         ]
 
     def _setProperties(self, msg, bgColor, fontColor, fontSize, timerDuration):
@@ -121,16 +129,22 @@ class PopupMessage(App):
 
     # Creates a popup with a randomly chosen message and sound
     def _createRandomPopup(self):
+        return self._createPopup     
+
+    def displayRandomPopup(self):
         messages = self.derogatory_comments + self.good_comments
         msg = random.choice(messages)
         # random rgb values for colors, alpha(opaqueness) set to 1
         bgColor = (random.random(), random.random(), random.random(), 1)
         fontColor = (random.random(), random.random(), random.random(), 1)
         fontSize = random.randint(30, 80)
-        self._setProperties(msg, bgColor, fontColor, fontSize, 0)
-        pass
+        # play a random sound
+        rand_sound = random.choice(self.sounds)
+        sound = SoundLoader.load(rand_sound)
+        if sound:
+            sound.play()
 
-    def displayRandomPopup(self):
+        self._setProperties(msg, bgColor, fontColor, fontSize, 0)
         self._type = PopupMessage.POPUP_TYPE_RANDOM
         self.run()
 

@@ -8,4 +8,3 @@ you wish to run when the package is first imported into a program.
 For more information, see the official documentation:
 https://docs.python.org/3/reference/import.html#regular-packages
 """
-
