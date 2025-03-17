@@ -5,6 +5,7 @@ from kivy.core.window import Window
 import random
 
 class PopupMessage(App):
+    # Static class variables
     POPUP_TYPE_REGULAR = 0
     POPUP_TYPE_TIMER = 1
     POPUP_TYPE_SUCCESS_FAIL = 2
