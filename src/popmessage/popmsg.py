@@ -122,7 +122,7 @@ class PopupMessage(App):
         if fontSize is None:
             fontSize = self._fontSize
         if timerDuration is None:
-            seconds = random.randrange(0, 360)
+            seconds = random.randrange(0, 100)
             print("random time ", seconds)
         else:
             seconds = math.floor(timerDuration*60)    
