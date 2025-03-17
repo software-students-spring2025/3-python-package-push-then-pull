@@ -1,6 +1,5 @@
 import pytest
-
-#from popmessage import popmsg
+from popmessage.popmsg import PopupMessage
 
 class Tests:
 
