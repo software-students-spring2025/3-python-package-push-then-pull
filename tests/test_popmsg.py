@@ -82,7 +82,6 @@ class Tests:
 
         mock_run.assert_called_once()
 
-
     def test_display_popup_with_params(self, popup, mocker):
         """Test displayPopup with custom parameters."""
         mock_set_properties = mocker.patch.object(popup, "_setProperties")
