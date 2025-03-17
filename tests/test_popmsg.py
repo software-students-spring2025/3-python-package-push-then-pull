@@ -1,9 +1,10 @@
 import pytest
+from popmessage.popmsg import PopupMessage
+
 from pytest_mock import MockerFixture
 from kivy.core.window import Window
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
-from src.popmessage.popmsg import PopupMessage  
 
 class Tests:
 

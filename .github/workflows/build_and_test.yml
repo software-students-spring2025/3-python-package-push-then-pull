@@ -1,0 +1,43 @@
+name: Build and test the package
+on:
+  pull_request:
+    branches: [main]
+
+jobs:
+  run_pytest:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    strategy:
+      matrix:
+        python-version: ["3.11", "3.13"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Python, pipenv and Pipfile packages
+        uses: kojoru/prepare-pipenv@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Regenerate lock file
+        run: |
+          pipenv lock
+      - name: Turn on 'editable' mode
+        run: |
+          pipenv install -e .
+      - name: Test with pytest
+        run: |
+          pipenv run python -m pytest
+
+  build:
+    needs: [run_pytest]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Python, pipenv and Pipfile packages
+        uses: kojoru/prepare-pipenv@v1
+        with:
+          python-version: "3.11"
+      - name: Build package
+        run: |
+          pipenv install build
+          pipenv run python -m build .
+      
+      
