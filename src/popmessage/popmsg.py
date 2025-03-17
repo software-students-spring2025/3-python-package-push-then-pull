@@ -15,33 +15,34 @@ class PopupMessage(App):
     POPUP_TYPE_SUCCESS_FAIL = 2
     POPUP_TYPE_RANDOM = 3
 
+    # List of derogatory comments for random selection when code is unsuccessful
+    derogatory_comments = [
+        "You suck at coding!",
+        "Better luck next time!",
+        "Is that even a real error?",
+        "Wow, that’s a new level of failure.",
+        "You’re really bad at this, huh?",
+        "Do you even have a computer science degree?",
+        "Who let you touch a computer?"
+    ]
+
+    # List of good comments for random selection when code is successful
+    good_comments = [
+        "Great job, you're doing awesome!",
+        "Keep up the excellent work!",
+        "You're a coding wizard!",
+        "Nice work, you're on the right track!",
+        "Fantastic effort, keep going!",
+        "Someone was a straight A student!",
+        "I'm proud of you!"
+    ]
+
+
     def __init__(self):
         super().__init__()
         self._type = self.POPUP_TYPE_REGULAR
         # Set the default properties of the pop-up message window
         self._setProperties("Default Message", "white", "black", 75, 0)
-
-        # List of derogatory comments for random selection when code is unsuccessful
-        self.derogatory_comments = [
-            "You suck at coding!",
-            "Better luck next time!",
-            "Is that even a real error?",
-            "Wow, that’s a new level of failure.",
-            "You’re really bad at this, huh?",
-            "Do you even have a computer science degree?",
-            "Who let you touch a computer?"
-        ]
-
-        # List of good comments for random selection when code is successful
-        self.good_comments = [
-            "Great job, you're doing awesome!",
-            "Keep up the excellent work!",
-            "You're a coding wizard!",
-            "Nice work, you're on the right track!",
-            "Fantastic effort, keep going!",
-            "Someone was a straight A student!",
-            "I'm proud of you!"
-        ]
 
         # List of sounds for random selection when _createRandomPopup is called
         directory = os.path.dirname(os.path.abspath(__file__))
