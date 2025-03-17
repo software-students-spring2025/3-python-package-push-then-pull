@@ -4,6 +4,7 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
 from kivy.core.audio import SoundLoader
 import random
+import os
 
 class PopupMessage(App):
     # Static class variables
@@ -41,9 +42,10 @@ class PopupMessage(App):
         ]
 
         # List of sounds for random selection when _createRandomPopup is called
+        directory = os.path.dirname(os.path.abspath(__file__))
         self.sounds = [
-            "sounds/oh-brother-this-guy-stinks.mp3"
-            "sounds/yippeeeeeeeeeeeeee.mp3"
+            os.path.join(directory, "sounds", "oh-brother-this-guy-stinks.mp3"),
+            os.path.join(directory, "sounds", "yippeeeeeeeeeeeeee.mp3")
         ]
 
     def _setProperties(self, msg, bgColor, fontColor, fontSize, timerDuration):
@@ -129,7 +131,7 @@ class PopupMessage(App):
 
     # Creates a popup with a randomly chosen message and sound
     def _createRandomPopup(self):
-        return self._createPopup     
+        return self._createPopup()     
 
     def displayRandomPopup(self):
         messages = self.derogatory_comments + self.good_comments
