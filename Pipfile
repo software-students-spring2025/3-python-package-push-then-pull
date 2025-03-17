@@ -9,6 +9,7 @@ kivy-examples = "*"
 build = "*"
 popmessage = {file = ".", editable = true}
 pytest = "*"
+pytest_mock = "*"
 
 
 [dev-packages]

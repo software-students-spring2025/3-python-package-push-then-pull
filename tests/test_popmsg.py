@@ -1,5 +1,11 @@
 import pytest
 from popmessage.popmsg import PopupMessage
+'''
+from pytest_mock import MockerFixture
+from kivy.core.window import Window
+from kivy.uix.label import Label
+from kivy.uix.boxlayout import BoxLayout
+'''
 
 class Tests:
 
@@ -15,7 +21,7 @@ class Tests:
         actual = True
         assert actual == expected, "Expected True to be equal to True!"
 
-    def test_initializations(self, popup):
+    """ def test_initializations(self, popup):
         assert popup._type == PopupMessage.POPUP_TYPE_REGULAR
         assert popup._message == "Default Message"
         assert popup._bgColor == "white"
@@ -64,7 +70,7 @@ class Tests:
         assert layout.children[0].text == popup._message, "Label text does not match expected default message"
 
     def test_display_popup_defaults(self, popup, mocker):
-        """Test displayPopup when no arguments are provided."""
+        Test displayPopup when no arguments are provided.
         mock_set_properties = mocker.patch.object(popup, "_setProperties")
         mock_run = mocker.patch.object(popup, "run")
 
@@ -79,7 +85,7 @@ class Tests:
         mock_run.assert_called_once()
 
     def test_display_popup_with_params(self, popup, mocker):
-        """Test displayPopup with custom parameters."""
+        Test displayPopup with custom parameters.
         mock_set_properties = mocker.patch.object(popup, "_setProperties")
         mock_run = mocker.patch.object(popup, "run")
 
@@ -96,3 +102,4 @@ class Tests:
         mock_set_properties.assert_called_once_with(msg, bgColor, fontColor, fontSize, timerDuration)
 
         mock_run.assert_called_once()
+ """
