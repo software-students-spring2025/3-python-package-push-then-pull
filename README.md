@@ -39,10 +39,10 @@ We welcome contributions! If you'd like to contribute, here's how to set up your
 
 ## Teammates
 
-[Shamaamah Ahmad](https://github.com/shamaamahh)
-[Maya Humston](https://github.com/mayhumst)
-[Jessica Chen](https://github.com/jessicahc)
-[Catherine Huang](https://github.com/Catherine1342)
+- [Shamaamah Ahmad](https://github.com/shamaamahh)
+- [Maya Humston](https://github.com/mayhumst)
+- [Jessica Chen](https://github.com/jessicahc)
+- [Catherine Huang](https://github.com/Catherine1342)
 
 ## Configuration and Environment Variables
 
