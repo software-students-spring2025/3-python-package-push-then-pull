@@ -39,7 +39,10 @@ from popmessage.popmsg import PopupMessage
 
 #### Constructor
 
-`__init__(self)`
+```python
+__init__(self)
+```
+
 Constructs an instance of the `PopupMessage` class and initializes instance variables with default properties for the pop-up message window. Developers who want to create an instance of `PopupMessage` class should call `PopupMessage()`.
 
 Upon instantiation, each PopupMessage object has the following properties with default values:
@@ -55,7 +58,10 @@ Upon instantiation, each PopupMessage object has the following properties with d
 
 #### Public Methods
 
-`displayPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None)`
+```python
+displayPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None)
+```
+
 This method displays a pop-up message window with the customized properties defined through the parameters. If any of the parameters are not specified, it will default the property to the last configured value.
 
 **Parameters**:
@@ -67,13 +73,28 @@ This method displays a pop-up message window with the customized properties defi
 
 **Return**: None
 
-`displayTimerPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None, timerDuration=None)`
+---
+
+```python
+displayTimerPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None, timerDuration=None)
+```
+
 TO ADD
 
-`displaySFPopup(self, code_to_execute)`
+---
+
+```python
+displaySFPopup(self, code_to_execute)
+```
+
 TO ADD
 
-`displayRandomPopup(self)`
+---
+
+```python
+displayRandomPopup(self)
+```
+
 TO ADD
 
 ### Examples
@@ -98,15 +119,15 @@ myPopup2 = PopupMessage()
 myPopup2.displayPopup(msg="Hello World", bgColor="blue", fontSize=75)
 ```
 
-### Create and display a delayed / timed pop-up message window with customized properties
+#### 3. Create and display a delayed / timed pop-up message window with customized properties
 
 TO ADD
 
-### Create and display a coding-feedback pop-up message window
+#### 4. Create and display a coding-feedback pop-up message window
 
 TO ADD
 
-### Create and display a random pop-up message window
+#### 5. Create and display a random pop-up message window
 
 TO ADD
 
@@ -118,11 +139,27 @@ We welcome contributions! If you'd like to contribute to our package, here's how
 2. Clone our git repository to your local machine. Run `git clone https://github.com/software-students-spring2025/3-python-package-push-then-pull.git`
 3. Go to your cloned project directory, then create and activate a virtual environment: `pipenv shell`
 4. Inside your active virtual environment, install the following dependencies by running these commands:
-   `pipenv install kivy`
-   `pipenv install pytest`
-   `pipenv install pytest-mock`
-   `pipenv install build`
-   `pipenv install twine`
+
+   ```sh
+   pipenv install kivy
+   ```
+
+   ```sh
+   pipenv install pytest
+   ```
+
+   ```sh
+   pipenv install pytest-mock
+   ```
+
+   ```sh
+   pipenv install build
+   ```
+
+   ```sh
+   pipenv install twine
+   ```
+
 5. Check Pipfile to verify all the dependencies are installed.
 6. Now you are ready to contribute to our module. To add new features to our module, write your code under `src/popmessage` directory. The main code of our module is located in `src/popmessage/popmsg.py` file. (see additional documentation for contributors below)
 7. Any unit tests you've created should be included within the `tests` directory.
@@ -157,19 +194,28 @@ Once you are satisfied with your changes, you are now ready to push your changes
 
 PopupMessage class is a subclass of kivy.app.App class. The following methods are located in PopupMessage and can be enhanced by contributors.
 
-`_setProperties(msg, bgColor, fontColor, fontSize, timerDuration)`
+```python
+_setProperties(msg, bgColor, fontColor, fontSize, timerDuration)
+```
+
 A protected method that sets the properties of the pop-up message window.
 
 ---
 
-`_createPopup()`
+```python
+_createPopup(self)
+```
+
 A protected method that creates the pop-up message window with the configured properties.
 
 Returns the layout for rendering.
 
 ---
 
-`build()`
+```python
+build(self)
+```
+
 Kivy's abstract method that every subclass must implement and gets automatically invoked after App.run() is called.
 
 Returns the created pop-up window layout.
