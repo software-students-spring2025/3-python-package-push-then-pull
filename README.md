@@ -142,21 +142,9 @@ We welcome contributions! If you'd like to contribute to our package, here's how
 
    ```sh
    pipenv install kivy
-   ```
-
-   ```sh
    pipenv install pytest
-   ```
-
-   ```sh
    pipenv install pytest-mock
-   ```
-
-   ```sh
    pipenv install build
-   ```
-
-   ```sh
    pipenv install twine
    ```
 
