@@ -71,9 +71,9 @@ class PopupMessage(App):
         layout.add_widget(label)
         return layout
     
-    def displayPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None, timerDuration=None):
+    def displayPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None):
         """
-        Display the pop-up message window with the specified or default properties.
+        Display a pop-up message window with the specified or default properties.
         """
         # Use default values if parameters are not provided
         if msg is None:
@@ -84,10 +84,8 @@ class PopupMessage(App):
             fontColor = self._fontColor
         if fontSize is None:
             fontSize = self._fontSize
-        if timerDuration is None:
-            timerDuration = self._timerDuration
         
-        self._setProperties(msg, bgColor, fontColor, fontSize, timerDuration)
+        self._setProperties(msg, bgColor, fontColor, fontSize, 0)
         self.run()
     
     def displayTimerPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None, timerDuration=None):
@@ -132,6 +130,9 @@ class PopupMessage(App):
         self.run()   
 
     def displayRandomPopup(self):
+        """
+        Creates a popup with a randomly chosen message and sound
+        """
         messages = self.derogatory_comments + self.good_comments
         msg = random.choice(messages)
         # random rgb values for colors, alpha(opaqueness) set to 1

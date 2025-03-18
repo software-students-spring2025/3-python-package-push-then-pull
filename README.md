@@ -9,7 +9,8 @@
 [PopMessage on PyPI](link)
 
 ## Features
-- **Popup Windows Setup**: A helper function to create and display popup messages with specified or default properties.
+
+- **Popup Windows Setup**: Helper functions to create and display popup messages with specified or default properties.
 - **Timer Functionality**: Set a timer for reminders to display pop-up messages after a specified delay.
 - **Error and Debug Pop-ups**: Receive success or error messages with feedback on the status of your code.
 - **Surprise Me!**: Display random messages such as wholesome reminders, fun surprises, and even a few playful or humorous ones.
@@ -19,7 +20,7 @@
 
 ## Developer Setup
 
-If you're looking to contribute or set up the project locally, follow these steps:
+If you're looking to set up the project locally, follow these steps:
 
 1.
 2.
@@ -30,12 +31,188 @@ If you're looking to contribute or set up the project locally, follow these step
 
 You can easily import PopMessage into your Python project and start using the functions right away. Here's how you can use the package:
 
-- Example 1: (code snippet)
-- Example 2: etc
+### Import PopupMessage module:
+
+```python
+from popmessage.popmsg import PopupMessage
+```
+
+### Constructor
+
+```python
+__init__(self)
+```
+
+Constructs an instance of the `PopupMessage` class and initializes instance variables with default properties for the pop-up message window. Developers who want to create an instance of `PopupMessage` class should call `PopupMessage()`.
+
+Upon instantiation, each PopupMessage object has the following properties with default values:
+
+- **message**: The message to be displayed in the pop-up window. Defaults to "Default Message"
+- **bgColor**: The background color in the pop-up window.Defaults to "white".
+- **fontColor**: The text color of the displayed message. Defaults to "black".
+- **fontSize**: The font size of the displayed message. Defaults to 75.
+- **timerDuration**: The number of minutes before the pop-up window gets displayed. Defaults to 0.
+
+**Parameters**: None
+**Return**: None
+
+### Public Methods
+
+```python
+displayPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None)
+```
+
+This method displays a pop-up message window with the customized properties defined through the parameters. If any of the parameters are not specified, it will default the property to the last configured value.
+
+**Parameters**:
+
+- **message** (str, optional): The message to be displayed in the pop-up window. Defaults to the last configured value.
+- **bgColor** (str or tuple, optional): The background color in the pop-up window.Defaults to the last configured value.
+- **fontColor** (str or tuple, optional): The text color of the displayed message. Defaults to the last configured value.
+- **fontSize** (int, optional): The font size of the displayed message. Defaults to the last configured value.
+
+**Return**: None
+
+---
+
+```python
+displayTimerPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None, timerDuration=None)
+```
+
+TO ADD
+
+---
+
+```python
+displaySFPopup(self, code_to_execute)
+```
+
+TO ADD
+
+---
+
+```python
+displayRandomPopup(self)
+```
+
+TO ADD
+
+### Examples
+
+#### 1. Create and display a pop-up message window with default properties
+
+You can create a basic pop-up message window by creating an instance of PopupMessage class first and then call displayPopup() with no parameters specified.
+
+```python
+# Example1: Create and display a pop-up message window with default properties
+myPopup1 = PopupMessage()
+myPopup1.displayPopup()
+```
+
+#### 2. Create and display a pop-up message window with customized properties
+
+To customize a basic pop-up message window, you can invoke displayPopup() method and specify the properties you want to customize through its parameters.
+
+```python
+# Example2: Create and display a pop-up message window with customized properties
+myPopup2 = PopupMessage()
+myPopup2.displayPopup(msg="Hello World", bgColor="blue", fontSize=75)
+```
+
+#### 3. Create and display a delayed / timed pop-up message window with customized properties
+
+TO ADD
+
+#### 4. Create and display a coding-feedback pop-up message window
+
+TO ADD
+
+#### 5. Create and display a random pop-up message window
+
+TO ADD
 
 ## Contributing
 
-We welcome contributions! If you'd like to contribute, here's how to set up your development environment:
+We welcome contributions! If you'd like to contribute to our package, here's how to set up your development environment:
+
+1. Install python (version 3.10 or higher) and [pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies) if not already installed.
+2. Clone our git repository to your local machine. Run `git clone https://github.com/software-students-spring2025/3-python-package-push-then-pull.git`
+3. Go to your cloned project directory, then create and activate a virtual environment: `pipenv shell`
+4. Inside your active virtual environment, install the following dependencies by running these commands:
+
+   ```sh
+   pipenv install kivy
+   pipenv install pytest
+   pipenv install pytest-mock
+   pipenv install build
+   pipenv install twine
+   ```
+
+5. Check Pipfile to verify all the dependencies are installed.
+6. Now you are ready to contribute to our module. To add new features to our module, write your code under `src/popmessage` directory. The main code of our module is located in `src/popmessage/popmsg.py` file. (see additional documentation for contributors below)
+7. Any unit tests you've created should be included within the `tests` directory.
+8. To run the unit tests manually, navigate to the main project directory and run: `python3 -m pytest`
+
+For testing purposes you can follow these steps to build and upload to TestPyPI
+
+1. Build the project by running `python -m build` from the same directory where the `pyproject.toml` file is located.
+2. Verify that the built `.tar` archive has the files you expect your package to have (including any important non-code files) by running the command: `tar --list -f dist/popmessage-0.0.3.tar.gz`, where `popmessage-0.0.3` is replaced with your own package name and version.
+3. Create an account on [TestPyPI](https://test.pypi.org/) where one can upload to a test repository instead of the production PyPI repo.
+4. Create a [new API token](https://test.pypi.org/manage/account/#api-tokens) on TestPyPI with the "Scope" set to “Entire account”. Save a copy of the token somewhere safe.
+5. [Upload your package](popmessage) to the TestPyPI repository using twine, e.g. `twine upload -r testpypi dist/*`
+6. twine will output the URL of your package on the PyPI website - load that URL in your web browser to see your packaged published
+
+Every time you change the code in your package, you will need to rebuild and reupload it to PyPI. You will need to build from a clean slate and update the version number to achieve this:
+
+1. delete the autogenerated `dist` directory
+2. delete the autogenerated `src/*.egg-info` directory
+3. update the version number in `pyproject.toml` and anywhere else it is mentioned (do a find/replace) (e.g., from 0.0.3 to 0.0.4)
+4. build the package again with `python -m build`
+5. upload the package again with `twine upload -r testpypi dist/*`
+
+Repeat as many times as necessary until the package works as expected.
+
+Once you are satisfied with your changes, you are now ready to push your changes.
+
+1. Before pushing your changes, make sure the version number in pyproject.toml or anywhere else it is mentioned is updated.
+2. Now you can push your changes to your branch in the Github repository.
+3. Once you submit a pull request, this will trigger GitHub Actions to run the automated unit tests. One of the maintainers of the repository will review your pull request. If approved, your latest code changes will be uploaded to the real PyPI by the maintainer.
+
+### Additional Documentation for Contributors
+
+PopupMessage class is a subclass of kivy.app.App class. The following methods are located in PopupMessage and can be enhanced by contributors.
+
+```python
+_setProperties(msg, bgColor, fontColor, fontSize, timerDuration)
+```
+
+A protected method that sets the properties of the pop-up message window.
+
+---
+
+```python
+_createPopup(self)
+```
+
+A protected method that creates the pop-up message window with the configured properties.
+
+Returns the layout for rendering.
+
+---
+
+```python
+build(self)
+```
+
+Kivy's abstract method that every subclass must implement and gets automatically invoked after App.run() is called.
+
+Returns the created pop-up window layout.
+
+---
+
+## Compatibility Notice
+
+The popmessage package relies on the Kivy library, which may cause compatibility issues on Linux systems.
 
 ## Teammates
 

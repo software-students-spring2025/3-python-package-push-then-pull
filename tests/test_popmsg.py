@@ -59,7 +59,7 @@ class Tests:
 
         # Check that _setProperties was called with default values
         mock_set_properties.assert_called_once_with(
-            popup._message, popup._bgColor, popup._fontColor, popup._fontSize, popup._timerDuration
+            popup._message, popup._bgColor, popup._fontColor, popup._fontSize, 0
         )
 
         mock_run.assert_called_once()
@@ -73,12 +73,11 @@ class Tests:
         bgColor = (0.5, 0.5, 0.5, 1)
         fontColor = "yellow"
         fontSize = 20
-        timerDuration = 7.5
 
-        popup.displayPopup(msg, bgColor, fontColor, fontSize, timerDuration)
+        popup.displayPopup(msg, bgColor, fontColor, fontSize)
         
         # Check that _setProperties was called with custom values
-        mock_set_properties.assert_called_once_with(msg, bgColor, fontColor, fontSize, timerDuration)
+        mock_set_properties.assert_called_once_with(msg, bgColor, fontColor, fontSize, 0)
 
         mock_run.assert_called_once()
 
