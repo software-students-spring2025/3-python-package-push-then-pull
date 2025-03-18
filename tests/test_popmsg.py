@@ -151,12 +151,36 @@ class Tests:
         # Test assertions
         possible_msg = popup.derogatory_comments + popup.good_comments
         assert msg in possible_msg
+
+        # Check bgColor
         assert len(bgColor) == 4
         assert isinstance(bgColor, tuple)
         assert bgColor[3] == 1
+
+        # Check fontColor
         assert len(fontColor) == 4
         assert isinstance(fontColor, tuple)
         assert fontColor[3] == 1
+
+        # Check fontSize
         assert 30 <= fontSize <= 80
         assert timerDuration == 0
+        
+        mock_run.assert_called_once()
+    
+    # Test random popup sound
+    def test_random_popup_sound(self, mocker, popup):
+        # Create a mock sound for testing
+        sound = mocker.Mock()
+        mock_sound_loader = mocker.patch("popmessage.popmsg.SoundLoader.load", return_value = sound)
+
+        mocker_set_properties = mocker.patch.object(popup, "_setProperties", wraps = popup._setProperties)
+        mock_run = mocker.patch.object(popup, "run")
+        popup.displayRandomPopup()
+
+        # Check if sound was loaded
+        sound_args = mock_sound_loader.call_args[0][0]
+        assert sound_args in popup.sounds
+
+        sound.play.assert_called_once()
         mock_run.assert_called_once()
