@@ -42,7 +42,7 @@ We welcome contributions! If you'd like to contribute, here's how to set up your
 [Shamaamah Ahmad](https://github.com/shamaamahh)
 [Maya Humston](https://github.com/mayhumst)
 [Jessica Chen](https://github.com/jessicahc)
-[Catherine](https://github.com/Catherine1342)
+[Catherine Huang](https://github.com/Catherine1342)
 
 ## Configuration and Environment Variables
 
