@@ -135,3 +135,30 @@ class Tests:
 
             msg_arg = mock_set_properties.call_args[0][0]
             assert msg_arg == "Try again!"
+
+    # Test to check if the properties of _displayRandomPopup are correct
+    def test_random_popup_properties(self, mocker, popup):
+        mock_set_properties = mocker.patch.object(popup, "_setProperties", wraps = popup._setProperties)
+        mock_run = mocker.patch.object(popup, "run")
+        popup.displayRandomPopup()
+
+        # Get the popup properties
+        msg_args, _ = mock_set_properties.call_args
+        msg = msg_args[0]
+        bgColor = msg_args[1]
+        fontColor = msg_args[2]
+        fontSize = msg_args[3]
+        timerDuration = msg_args[4]
+
+        # Test assertions
+        possible_msg = popup.derogatory_comments + popup.good_comments
+        assert msg in possible_msg
+        assert len(bgColor) == 4
+        assert isinstance(bgColor, tuple)
+        assert bgColor[3] == 1
+        assert len(fontColor) == 4
+        assert isinstance(fontColor, tuple)
+        assert fontColor[3] == 1
+        assert 30 <= fontSize <= 80
+        assert timerDuration == 0
+        mock_run.assert_called_once()
