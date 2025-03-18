@@ -4,6 +4,8 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
 from kivy.core.audio import SoundLoader
 import random
+import math
+import time
 import os
 
 class PopupMessage(App):
@@ -13,33 +15,34 @@ class PopupMessage(App):
     POPUP_TYPE_SUCCESS_FAIL = 2
     POPUP_TYPE_RANDOM = 3
 
+    # List of derogatory comments for random selection when code is unsuccessful
+    derogatory_comments = [
+        "You suck at coding!",
+        "Better luck next time!",
+        "Is that even a real error?",
+        "Wow, that’s a new level of failure.",
+        "You’re really bad at this, huh?",
+        "Do you even have a computer science degree?",
+        "Who let you touch a computer?"
+    ]
+
+    # List of good comments for random selection when code is successful
+    good_comments = [
+        "Great job, you're doing awesome!",
+        "Keep up the excellent work!",
+        "You're a coding wizard!",
+        "Nice work, you're on the right track!",
+        "Fantastic effort, keep going!",
+        "Someone was a straight A student!",
+        "I'm proud of you!"
+    ]
+
+
     def __init__(self):
         super().__init__()
         self._type = self.POPUP_TYPE_REGULAR
         # Set the default properties of the pop-up message window
         self._setProperties("Default Message", "white", "black", 75, 0)
-
-        # List of derogatory comments for random selection when code is unsuccessful
-        self.derogatory_comments = [
-            "You suck at coding!",
-            "Better luck next time!",
-            "Is that even a real error?",
-            "Wow, that’s a new level of failure.",
-            "You’re really bad at this, huh?",
-            "Do you even have a computer science degree?",
-            "Who let you touch a computer?"
-        ]
-
-        # List of good comments for random selection when code is successful
-        self.good_comments = [
-            "Great job, you're doing awesome!",
-            "Keep up the excellent work!",
-            "You're a coding wizard!",
-            "Nice work, you're on the right track!",
-            "Fantastic effort, keep going!",
-            "Someone was a straight A student!",
-            "I'm proud of you!"
-        ]
 
         # List of sounds for random selection when _createRandomPopup is called
         directory = os.path.dirname(os.path.abspath(__file__))
@@ -105,9 +108,34 @@ class PopupMessage(App):
 
     # Add code to the following functions
     def _createTimerPopup(self):
-        pass
+        return self._createPopup()
     
-    def displayTimerPopup(self):
+    def displayTimerPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None, timerDuration=None):
+        
+        # Use default values if parameters are not provided
+        if msg is None:
+            msg = self._message
+        if bgColor is None:
+            bgColor = self._bgColor
+        if fontColor is None:
+            fontColor = self._fontColor
+        if fontSize is None:
+            fontSize = self._fontSize
+        if timerDuration is None:
+            seconds = random.randrange(0, 100)
+            print("random time ", seconds)
+        else:
+            seconds = math.floor(timerDuration*60)    
+
+        # type checking?
+        if not isinstance(msg, str):
+            raise TypeError("Custom message must be of type String")
+        
+        self._setProperties(msg, bgColor, fontColor, fontSize, seconds)
+
+        
+        time.sleep(seconds)
+
         self._type = PopupMessage.POPUP_TYPE_TIMER
         self.run()
 
