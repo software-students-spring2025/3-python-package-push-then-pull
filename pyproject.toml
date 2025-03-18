@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "popmessage"
-version = "0.0.4"
+version = "0.0.5"
 authors = [
   { name="Maya Humston", email="mayahumston@gmail.com" },
   { name="Shamaamah Ahmad", email="shamaamah.ahmad@gmail.com" },

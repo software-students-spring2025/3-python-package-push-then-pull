@@ -9,12 +9,6 @@ import time
 import os
 
 class PopupMessage(App):
-    # Static class variables
-    POPUP_TYPE_REGULAR = 0
-    POPUP_TYPE_TIMER = 1
-    POPUP_TYPE_SUCCESS_FAIL = 2
-    POPUP_TYPE_RANDOM = 3
-
     # List of derogatory comments for random selection when code is unsuccessful
     derogatory_comments = [
         "You suck at coding!",
@@ -37,10 +31,8 @@ class PopupMessage(App):
         "I'm proud of you!"
     ]
 
-
     def __init__(self):
         super().__init__()
-        self._type = self.POPUP_TYPE_REGULAR
         # Set the default properties of the pop-up message window
         self._setProperties("Default Message", "white", "black", 75, 0)
 
@@ -66,14 +58,7 @@ class PopupMessage(App):
             Kivy's abstract method that every child class must implement 
             and gets automatically invoked after App.run() is called.
             """ 
-            if self._type == PopupMessage.POPUP_TYPE_REGULAR:
-                return self._createPopup()
-            elif self._type == PopupMessage.POPUP_TYPE_TIMER:
-                return self._createTimerPopup()
-            elif self._type == PopupMessage.POPUP_TYPE_SUCCESS_FAIL:
-                return self._createSFPopup()
-            elif self._type == PopupMessage.POPUP_TYPE_RANDOM:
-                return self._createRandomPopup()
+            return self._createPopup()
             
     def _createPopup(self):
         """
@@ -102,13 +87,8 @@ class PopupMessage(App):
         if timerDuration is None:
             timerDuration = self._timerDuration
         
-        self._type = PopupMessage.POPUP_TYPE_REGULAR
         self._setProperties(msg, bgColor, fontColor, fontSize, timerDuration)
         self.run()
-
-    # Add code to the following functions
-    def _createTimerPopup(self):
-        return self._createPopup()
     
     def displayTimerPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None, timerDuration=None):
         
@@ -133,14 +113,9 @@ class PopupMessage(App):
         
         self._setProperties(msg, bgColor, fontColor, fontSize, seconds)
 
-        
         time.sleep(seconds)
 
-        self._type = PopupMessage.POPUP_TYPE_TIMER
         self.run()
-
-    def _createSFPopup(self):
-        return self._createPopup()
 
     def displaySFPopup(self, code_to_execute):
         try:
@@ -153,13 +128,8 @@ class PopupMessage(App):
             msg = random.choice(self.derogatory_comments)
             bgColor = "red"
         
-        self._type = PopupMessage.POPUP_TYPE_SUCCESS_FAIL
         self._setProperties(msg, bgColor, "white", 50, 0)
-        self.run()
-
-    # Creates a popup with a randomly chosen message and sound
-    def _createRandomPopup(self):
-        return self._createPopup()     
+        self.run()   
 
     def displayRandomPopup(self):
         messages = self.derogatory_comments + self.good_comments
@@ -175,6 +145,5 @@ class PopupMessage(App):
             sound.play()
 
         self._setProperties(msg, bgColor, fontColor, fontSize, 0)
-        self._type = PopupMessage.POPUP_TYPE_RANDOM
         self.run()
 
