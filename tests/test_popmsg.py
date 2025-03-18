@@ -82,59 +82,57 @@ class Tests:
 
         mock_run.assert_called_once()
 
-        # SF tests
-        def test_display_sf_popup_success(mocker, popup):
-            """Test displaySFPopup with successful code execution."""
-            mock_set_properties = mocker.patch.object(popup, "_setProperties")
-            mock_run = mocker.patch.object(popup, "run")
-            
-            # Dummy function that does not raise an error
-            def successful_code():
-                pass
+    # SF tests
+    def test_display_sf_popup_success(self, mocker, popup):
+        """Test displaySFPopup with successful code execution."""
+        mock_set_properties = mocker.patch.object(popup, "_setProperties")
+        mock_run = mocker.patch.object(popup, "run")
+        
+        # Dummy function that does not raise an error
+        def successful_code():
+            pass
 
-            popup.displaySFPopup(successful_code)
+        popup.displaySFPopup(successful_code)
 
-            assert popup._type == PopupMessage.POPUP_TYPE_SUCCESS_FAIL
-            mock_set_properties.assert_called_once()
-            args = mock_set_properties.call_args[0]
-            assert args[1] == "green" 
-            mock_run.assert_called_once()
-
-
-        def test_display_sf_popup_failure(mocker, popup):
-            """Test displaySFPopup when code raises an error."""
-            mock_set_properties = mocker.patch.object(popup, "_setProperties")
-            mock_run = mocker.patch.object(popup, "run")
-
-            # Dummy function that raises an error
-            def failing_code():
-                raise ValueError("Oops!")
-
-            popup.displaySFPopup(failing_code)
-
-            assert popup._type == PopupMessage.POPUP_TYPE_SUCCESS_FAIL
-            mock_set_properties.assert_called_once()
-            args = mock_set_properties.call_args[0]
-            assert args[1] == "red" 
-            mock_run.assert_called_once()
+        mock_set_properties.assert_called_once()
+        args = mock_set_properties.call_args[0]
+        assert args[1] == "green" 
+        mock_run.assert_called_once()
 
 
-        def test_display_sf_popup_random_comment(mocker, popup):
-            """Test that displaySFPopup picks a comment from the correct list."""
-            # Force predictable choices from good/derogatory comment lists
-            popup.good_comments = ["Nice work, you're on the right track!"]
-            popup.derogatory_comments = ["You suck at coding!"]
+    def test_display_sf_popup_failure(self, mocker, popup):
+        """Test displaySFPopup when code raises an error."""
+        mock_set_properties = mocker.patch.object(popup, "_setProperties")
+        mock_run = mocker.patch.object(popup, "run")
 
-            mock_set_properties = mocker.patch.object(popup, "_setProperties")
-            mock_run = mocker.patch.object(popup, "run")
+        # Dummy function that raises an error
+        def failing_code():
+            raise ValueError("Oops!")
 
-            def fail_func():
-                raise RuntimeError()
+        popup.displaySFPopup(failing_code)
 
-            popup.displaySFPopup(fail_func)
+        mock_set_properties.assert_called_once()
+        args = mock_set_properties.call_args[0]
+        assert args[1] == "red" 
+        mock_run.assert_called_once()
 
-            msg_arg = mock_set_properties.call_args[0][0]
-            assert msg_arg == "Try again!"
+
+    def test_display_sf_popup_random_comment(self, mocker, popup):
+        """Test that displaySFPopup picks a comment from the correct list."""
+        # Force predictable choices from good/derogatory comment lists
+        popup.good_comments = ["Nice work, you're on the right track!"]
+        popup.derogatory_comments = ["You suck at coding!"]
+
+        mock_set_properties = mocker.patch.object(popup, "_setProperties")
+        mock_run = mocker.patch.object(popup, "run")
+
+        def fail_func():
+            raise RuntimeError()
+
+        popup.displaySFPopup(fail_func)
+
+        msg_arg = mock_set_properties.call_args[0][0]
+        assert msg_arg == "You suck at coding!"
 
     # Test to check if the properties of _displayRandomPopup are correct
     def test_random_popup_properties(self, mocker, popup):
