@@ -37,7 +37,7 @@ You can easily import PopMessage into your Python project and start using the fu
 from popmessage.popmsg import PopupMessage
 ```
 
-#### Constructor
+### Constructor
 
 ```python
 __init__(self)
@@ -56,7 +56,7 @@ Upon instantiation, each PopupMessage object has the following properties with d
 **Parameters**: None
 **Return**: None
 
-#### Public Methods
+### Public Methods
 
 ```python
 displayPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None)
