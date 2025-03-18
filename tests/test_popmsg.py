@@ -34,7 +34,6 @@ class Tests:
         assert popup._fontColor == "red"
         assert popup._fontSize == 50
         assert popup._timerDuration == 10
-    
    
     def test_build(self, mocker: MockerFixture, popup):
         mock_create_popup = mocker.patch.object(popup, "_createPopup", return_value="Popup Created")
