@@ -253,6 +253,13 @@ The `popmessage` package relies on the Kivy library, which may cause compatibili
 
 ## Running the Project
 
+To run PopMessage, please follow these steps:
+
+### Note
+ Please make sure you have installed
+ - Git: To clone the repository.
+ - Kivy Dependencies: You many need to install additional dependecies depending on your platform. Please refer to the [Kivy installation guide](https://kivy.org/doc/stable/gettingstarted/installation.html).
+
 ## License
 
 [Click Here](https://github.com/software-students-spring2025/3-python-package-push-then-pull/blob/suprise-me/LICENSE) to view the license.
