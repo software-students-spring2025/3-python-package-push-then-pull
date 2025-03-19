@@ -96,7 +96,11 @@ TO ADD
 displayRandomPopup(self)
 ```
 
-TO ADD
+This method displays a pop-up message window with randomly chosen properties. A random message will be displayed and a random sound will be played when this method is called.
+
+**Parameters**: None
+
+**Return**: None
 
 ### Examples
 
@@ -130,7 +134,13 @@ TO ADD
 
 #### 5. Create and display a random pop-up message window
 
-TO ADD
+You can create a random pop-up message window by creating an instance of PopupMessage class first and then call displayRandomPopup() with no parameters specified.
+
+```python
+# Example5: Create and display a random pop-up message window with randomized properties
+myPopup5 = PopupMessage()
+myPopup5.displayRandomPopup()
+```
 
 Link to an example Python program using our package: [demo.py](https://github.com/software-students-spring2025/3-python-package-push-then-pull/blob/main/demo.py)
 
