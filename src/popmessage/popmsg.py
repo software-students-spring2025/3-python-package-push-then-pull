@@ -61,6 +61,7 @@ class PopupMessage(App):
             Kivy's abstract method that every child class must implement 
             and gets automatically invoked after App.run() is called.
             """ 
+            Window.size = (1000, 750)
             return self._createPopup()
             
     def _createPopup(self):
@@ -97,6 +98,7 @@ class PopupMessage(App):
         
         # set window background to "blank"/default 
         Window.clearcolor = "black"
+        Window.size = (100, 100)
 
         # Use default values if parameters are not provided
         if msg is None:
@@ -108,7 +110,7 @@ class PopupMessage(App):
         if fontSize is None:
             fontSize = self._fontSize
         if timerSeconds is None:
-            seconds = random.randrange(0, 100)
+            seconds = random.randrange(0, 60)
             print("random time ", seconds)
         else:
             seconds = timerSeconds
@@ -134,8 +136,6 @@ class PopupMessage(App):
         self.run()
         # when exited, the screen will return to blank/default
         Window.clearcolor = "black"
-        
-     
         
 
     def displaySFPopup(self, code_to_execute):
