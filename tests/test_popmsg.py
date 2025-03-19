@@ -164,7 +164,7 @@ class Tests:
         # Check fontSize
         assert 30 <= fontSize <= 80
         assert timerDuration == 0
-        
+
         mock_run.assert_called_once()
     
     # Test random popup sound
@@ -182,4 +182,21 @@ class Tests:
         assert sound_args in popup.sounds
 
         sound.play.assert_called_once()
+        mock_run.assert_called_once()
+
+    # Test to see what happens when no sound gets loaded
+    def test_random_popup_no_sound(self, mocker, popup):
+        # No sound
+        mock_sound_loader = mocker.patch("popmessage.popmsg.SoundLoader.load", return_value = None)
+
+        mocker_set_properties = mocker.patch.object(popup, "_setProperties", wraps = popup._setProperties)
+        mock_run = mocker.patch.object(popup, "run")
+        popup.displayRandomPopup()
+
+        # Check if sound was loaded
+        sound_args = mock_sound_loader.call_args[0][0]
+        assert sound_args in popup.sounds
+
+        # Make sure run and set properties are still being called
+        mocker_set_properties.assert_called_once()
         mock_run.assert_called_once()
