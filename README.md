@@ -18,6 +18,44 @@
 
 ## Installation
 
+Please make sure you have installed
+ - Python: version 3.10 or higher.
+ - Git: To clone the repository.
+ - Kivy Dependencies: You many need to install additional dependecies depending on your platform. Please refer to the [Kivy installation guide](https://kivy.org/doc/stable/gettingstarted/installation.html).
+ - Virtual Environment ([pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies)): We recommend you use a virtual environment to run PopMessage to isolate dependencies.
+
+### Installing in a Seperate Project
+
+### Cloning Locally
+
+To clone the repository, please open terminal or command prompt on your system and run:
+```sh
+git clone https://github.com/software-students-spring2025/3-python-package-push-then-pull.git
+cd 3-python-package-push-then-pull
+
+```
+#### Setup a Virtual Environment
+
+We recommend you use a virtual environment when running PopMessage. To do so:
+
+Run this command in your terminal or command prompt when you are in the cloned repository:
+```sh
+pipenv shell
+```
+
+#### Running PopMessage
+
+Once you make sure all dependencies have been installed, please execute the following command to run PopMessage:
+```sh
+pipenv run python -m popmessage.popmsg
+```
+Please note executing this command won't do anything as no functions from the package will be called.
+
+To see examples of pop-up messages using PopMessage's functions, please execute the following command:
+```sh
+pipenv run python demo.py
+```
+
 ## Developer Setup
 
 If you're looking to set up the project locally, follow these steps:
@@ -254,40 +292,6 @@ The `popmessage` package relies on the Kivy library, which may cause compatibili
 ## Running the Project
 
 To run PopMessage, please follow these steps:
-
-### Note
-
- Please make sure you have installed
- - Python: version 3.10 or higher.
- - Git: To clone the repository.
- - Kivy Dependencies: You many need to install additional dependecies depending on your platform. Please refer to the [Kivy installation guide](https://kivy.org/doc/stable/gettingstarted/installation.html).
- - Virtual Environment ([pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies)): We recommend you use a virtual environment to run PopMessage to isolate dependencies.
-
-### Setup
-
-#### Clone the Repository
-
-To clone the repository, please open terminal or command prompt on your system and run:
-```sh
-git clone https://github.com/software-students-spring2025/3-python-package-push-then-pull.git
-cd 3-python-package-push-then-pull
-```
-
-#### Setup a Virtual Environment
-
-We recommend you use a virtual environment when running PopMessage. To do so:
-
-Run this command in your terminal or command prompt when you are in the cloned repository:
-```sh
-pipenv shell
-```
-
-#### Running PopMessage
-
-Once you make sure all dependencies have been installed, please execute the following command to run PopMessage:
-```sh
-pipenv run python -m popmessage.popmsg
-```
 
 ## License
 
