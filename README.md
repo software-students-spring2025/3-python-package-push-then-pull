@@ -4,6 +4,13 @@
 
 // insert pypi badge [badge](link to workflows)
 
+## Teammates
+
+- [Shamaamah Ahmad](https://github.com/shamaamahh)
+- [Maya Humston](https://github.com/mayhumst)
+- [Jessica Chen](https://github.com/jessicahc)
+- [Catherine Huang](https://github.com/Catherine1342)
+
 ## PyPI Link
 
 [PopMessage on PyPI](link) broken link for now
@@ -18,24 +25,53 @@
 
 ## Installation
 
-## Developer Setup
+Please make sure you have installed
+ - Python: version 3.10 or higher.
+ - Git: To clone the repository.
+ - Kivy Dependencies: You many need to install additional dependecies depending on your platform. Please refer to the [Kivy installation guide](https://kivy.org/doc/stable/gettingstarted/installation.html).
+ - Virtual Environment ([pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies)): We recommend you use a virtual environment to run PopMessage to isolate dependencies.
 
-If you're looking to set up the project locally, follow these steps:
+### Installing in a Seperate Project
 
-1.
-2.
-3.
-4.
-
-## Usage
-
-You can easily import PopMessage into your Python project and start using the functions right away. Here's how you can use the package:
-
-### Import PopupMessage module:
+To import the PopupMessage module into your project:
 
 ```python
 from popmessage.popmsg import PopupMessage
 ```
+
+### Cloning Locally
+
+To clone the repository, please open terminal or command prompt on your system and run:
+```sh
+git clone https://github.com/software-students-spring2025/3-python-package-push-then-pull.git
+cd 3-python-package-push-then-pull
+
+```
+#### Setup a Virtual Environment
+
+We recommend you use a virtual environment when running PopMessage. To do so:
+
+Run this command in your terminal or command prompt when you are in the cloned repository:
+```sh
+pipenv shell
+```
+
+#### Running PopMessage
+
+Once you make sure all dependencies have been installed, please execute the following command to run PopMessage:
+```sh
+pipenv run python -m popmessage.popmsg
+```
+Please note executing this command won't do anything as no functions from the package will be called.
+
+To see examples of pop-up messages using PopMessage's functions, please execute the following command:
+```sh
+pipenv run python demo.py
+```
+
+## Documentation
+
+You can easily import PopMessage into your Python project and start using the functions right away. Here's how you can use the package:
 
 ### Constructor
 
@@ -239,19 +275,6 @@ Returns the created pop-up window layout.
 ## Compatibility Notice
 
 The `popmessage` package relies on the Kivy library, which may cause compatibility issues on Linux systems.
-
-## Teammates
-
-- [Shamaamah Ahmad](https://github.com/shamaamahh)
-- [Maya Humston](https://github.com/mayhumst)
-- [Jessica Chen](https://github.com/jessicahc)
-- [Catherine Huang](https://github.com/Catherine1342)
-
-## Configuration and Environment Variables
-
-(prob not needed but just here as a placeholder)
-
-## Running the Project
 
 ## License
 
