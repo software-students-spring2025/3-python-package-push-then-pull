@@ -43,7 +43,18 @@ class PopupMessage(App):
         directory = os.path.dirname(os.path.abspath(__file__))
         self.sounds = [
             os.path.join(directory, "sounds", "oh-brother-this-guy-stinks.mp3"),
-            os.path.join(directory, "sounds", "yippeeeeeeeeeeeeee.mp3")
+            os.path.join(directory, "sounds", "yippeeeeeeeeeeeeee.mp3"),
+            os.path.join(directory, "sounds", "sad-meow-song.mp3"),
+            os.path.join(directory, "sounds", "anime-wow-sound-effect.mp3"),
+            os.path.join(directory, "sounds", "they-ask-you-how-you-are-and-you-just-have-to-say-that-youre-fine-sound-effect_IgYM1CV.mp3"),
+            os.path.join(directory, "sounds", "applause-4.mp3"),
+            os.path.join(directory, "sounds", "emotional-damage-meme.mp3"),
+            os.path.join(directory, "sounds", "kids-saying-yay-sound-effect_3.mp3"),
+            os.path.join(directory, "sounds", "george-micael-wham-careless-whisper-1.mp3"),
+            os.path.join(directory, "sounds", "five-nights-at-freddys-full-scream-sound_2.mp3"),
+            os.path.join(directory, "sounds", "five-nights-at-freddys-2-full-scream-sound.mp3"),
+            os.path.join(directory, "sounds", "fnaf-1-music-box.mp3"),
+            os.path.join(directory, "sounds", "jojos-golden-wind_kL2WElB.mp3")
         ]
 
     def _setProperties(self, msg, bgColor, fontColor, fontSize, timerDuration):
