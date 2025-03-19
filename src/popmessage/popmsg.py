@@ -39,7 +39,7 @@ class PopupMessage(App):
         # Set the default properties of the pop-up message window
         self._setProperties("Default Message", "white", "black", 75, 0)
 
-        # List of sounds for random selection when _createRandomPopup is called
+        # List of sounds for random selection when displayRandomPopup is called
         directory = os.path.dirname(os.path.abspath(__file__))
         self.sounds = [
             os.path.join(directory, "sounds", "oh-brother-this-guy-stinks.mp3"),
