@@ -43,7 +43,7 @@ from popmessage.popmsg import PopupMessage
 __init__(self)
 ```
 
-Constructs an instance of the `PopupMessage` class and initializes instance variables with default properties for the pop-up message window. Developers who want to create an instance of `PopupMessage` class should call `PopupMessage()`.
+Constructs an instance of the `PopupMessage` class which represents a pop-up message window. It initializes instance variables with default properties for the pop-up message window. Developers who want to create an instance of `PopupMessage` class should call `PopupMessage()`.
 
 Upon instantiation, each PopupMessage object has the following properties with default values:
 
@@ -63,7 +63,7 @@ Upon instantiation, each PopupMessage object has the following properties with d
 displayPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None)
 ```
 
-This method displays a pop-up message window with the customized properties defined through the parameters. If any of the parameters are not specified, it will default the property to the last configured value.
+This method displays the pop-up message window with customized properties defined through the parameters. If any of the parameters are not specified, it will default the property to the last configured value.
 
 **Parameters**:
 
@@ -112,7 +112,7 @@ myPopup1.displayPopup()
 
 #### 2. Create and display a pop-up message window with customized properties
 
-To customize a basic pop-up message window, you can invoke displayPopup() method and specify the properties you want to customize through its parameters.
+To customize a basic pop-up message window, you can invoke displayPopup() method on an existing instance of PopupMessage and specify the properties you want to customize through its parameters.
 
 ```python
 # Example2: Create and display a pop-up message window with customized properties
