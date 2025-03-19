@@ -1,4 +1,4 @@
-from src.popmessage.popmsg import *
+from popmessage.popmsg import PopupMessage
 
 '''
 
