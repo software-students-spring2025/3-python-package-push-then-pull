@@ -54,6 +54,7 @@ Upon instantiation, each PopupMessage object has the following properties with d
 - **timerDuration**: The number of minutes before the pop-up window gets displayed. Defaults to 0.
 
 **Parameters**: None
+
 **Return**: None
 
 ### Public Methods
@@ -130,6 +131,8 @@ TO ADD
 #### 5. Create and display a random pop-up message window
 
 TO ADD
+
+Link to an example Python program using our package: [demo.py](https://github.com/software-students-spring2025/3-python-package-push-then-pull/blob/main/demo.py)
 
 ## Contributing
 
