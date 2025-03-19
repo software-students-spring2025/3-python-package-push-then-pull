@@ -3,6 +3,7 @@ from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
 from kivy.core.audio import SoundLoader
+from kivy.clock import Clock
 import random
 import math
 import time
@@ -90,7 +91,7 @@ class PopupMessage(App):
         self._setProperties(msg, bgColor, fontColor, fontSize, timerDuration)
         self.run()
     
-    def displayTimerPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None, timerDuration=None):
+    def displayTimerPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None, timerSeconds=None):
         
         # Use default values if parameters are not provided
         if msg is None:
@@ -101,21 +102,21 @@ class PopupMessage(App):
             fontColor = self._fontColor
         if fontSize is None:
             fontSize = self._fontSize
-        if timerDuration is None:
+        if timerSeconds is None:
             seconds = random.randrange(0, 100)
             print("random time ", seconds)
         else:
-            seconds = math.floor(timerDuration*60)    
+            seconds = timerSeconds
 
         # type checking?
         if not isinstance(msg, str):
             raise TypeError("Custom message must be of type String")
         
         self._setProperties(msg, bgColor, fontColor, fontSize, seconds)
+        print('here')
 
-        time.sleep(seconds)
-
-        self.run()
+        Clock.schedule_once(self._callback)
+        
 
     def displaySFPopup(self, code_to_execute):
         try:
