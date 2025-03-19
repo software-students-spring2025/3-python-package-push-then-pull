@@ -43,7 +43,7 @@ from popmessage.popmsg import PopupMessage
 __init__(self)
 ```
 
-Constructs an instance of the `PopupMessage` class and initializes instance variables with default properties for the pop-up message window. Developers who want to create an instance of `PopupMessage` class should call `PopupMessage()`.
+Constructs an instance of the `PopupMessage` class which represents a pop-up message window. It initializes instance variables with default properties for the pop-up message window. Developers who want to create an instance of `PopupMessage` class should call `PopupMessage()`.
 
 Upon instantiation, each PopupMessage object has the following properties with default values:
 
@@ -54,6 +54,7 @@ Upon instantiation, each PopupMessage object has the following properties with d
 - **timerDuration**: The number of minutes before the pop-up window gets displayed. Defaults to 0.
 
 **Parameters**: None
+
 **Return**: None
 
 ### Public Methods
@@ -62,7 +63,7 @@ Upon instantiation, each PopupMessage object has the following properties with d
 displayPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None)
 ```
 
-This method displays a pop-up message window with the customized properties defined through the parameters. If any of the parameters are not specified, it will default the property to the last configured value.
+This method displays the pop-up message window with customized properties defined through the parameters. If any of the parameters are not specified, it will default the property to the last configured value.
 
 **Parameters**:
 
@@ -111,7 +112,7 @@ myPopup1.displayPopup()
 
 #### 2. Create and display a pop-up message window with customized properties
 
-To customize a basic pop-up message window, you can invoke displayPopup() method and specify the properties you want to customize through its parameters.
+To customize a basic pop-up message window, you can invoke displayPopup() method on an existing instance of PopupMessage and specify the properties you want to customize through its parameters.
 
 ```python
 # Example2: Create and display a pop-up message window with customized properties
@@ -131,11 +132,13 @@ TO ADD
 
 TO ADD
 
+Link to an example Python program using our package: [demo.py](https://github.com/software-students-spring2025/3-python-package-push-then-pull/blob/main/demo.py)
+
 ## Contributing
 
 We welcome contributions! If you'd like to contribute to our package, here's how to set up your development environment:
 
-1. Install python (version 3.10 or higher) and [pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies) if not already installed.
+1. This module requires Python version 3.10 or higher. Install Python and [pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies) if not already installed.
 2. Clone our git repository to your local machine. Run `git clone https://github.com/software-students-spring2025/3-python-package-push-then-pull.git`
 3. Go to your cloned project directory, then create and activate a virtual environment: `pipenv shell`
 4. Inside your active virtual environment, install the following dependencies by running these commands:
@@ -148,19 +151,25 @@ We welcome contributions! If you'd like to contribute to our package, here's how
    pipenv install twine
    ```
 
-5. Check Pipfile to verify all the dependencies are installed.
-6. Now you are ready to contribute to our module. To add new features to our module, write your code under `src/popmessage` directory. The main code of our module is located in `src/popmessage/popmsg.py` file. (see additional documentation for contributors below)
-7. Any unit tests you've created should be included within the `tests` directory.
-8. To run the unit tests manually, navigate to the main project directory and run: `python3 -m pytest`
+5. For development purposes, install the package in "_editable_" mode so that changes to the package are immediately updated in the virtual environment.
 
-For testing purposes you can follow these steps to build and upload to TestPyPI
+- Run `pipenv install -e .` from the main project directory.
+
+6. Check Pipfile to verify all the dependencies are installed. Make sure python_version is the 3.10 or above.
+7. Now you are ready to contribute to our module. To add new features to our module, write your code under `src/popmessage` directory. The main code of our module is located in `src/popmessage/popmsg.py` file. (see [additional documentation](#-additional-documentation-for-contributors) for contributors below)
+8. Any unit tests you've created should be included within the `tests` directory.
+9. To run the unit tests manually, navigate to the main project directory and run: `python3 -m pytest`
+
+- If the above command throws any error, try `pipenv run python3 -m pytest`, or exit and reactivate your virtual environment and try again.
+
+For testing purposes you can follow these steps to build and upload your enhanced package to TestPyPI:
 
 1. Build the project by running `python -m build` from the same directory where the `pyproject.toml` file is located.
 2. Verify that the built `.tar` archive has the files you expect your package to have (including any important non-code files) by running the command: `tar --list -f dist/popmessage-0.0.3.tar.gz`, where `popmessage-0.0.3` is replaced with your own package name and version.
 3. Create an account on [TestPyPI](https://test.pypi.org/) where one can upload to a test repository instead of the production PyPI repo.
 4. Create a [new API token](https://test.pypi.org/manage/account/#api-tokens) on TestPyPI with the "Scope" set to “Entire account”. Save a copy of the token somewhere safe.
 5. [Upload your package](popmessage) to the TestPyPI repository using twine, e.g. `twine upload -r testpypi dist/*`
-6. twine will output the URL of your package on the PyPI website - load that URL in your web browser to see your packaged published
+6. Twine will output the URL of your package on the PyPI website - load that URL in your web browser to see your packaged published
 
 Every time you change the code in your package, you will need to rebuild and reupload it to PyPI. You will need to build from a clean slate and update the version number to achieve this:
 
@@ -212,7 +221,7 @@ Returns the created pop-up window layout.
 
 ## Compatibility Notice
 
-The popmessage package relies on the Kivy library, which may cause compatibility issues on Linux systems.
+The `popmessage` package relies on the Kivy library, which may cause compatibility issues on Linux systems.
 
 ## Teammates
 
