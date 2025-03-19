@@ -156,11 +156,13 @@ We welcome contributions! If you'd like to contribute to our package, here's how
 - Run `pipenv install -e .` from the main project directory.
 
 6. Check Pipfile to verify all the dependencies are installed. Make sure python_version is the 3.10 or above.
-7. Now you are ready to contribute to our module. To add new features to our module, write your code under `src/popmessage` directory. The main code of our module is located in `src/popmessage/popmsg.py` file. (see additional documentation for contributors below)
+7. Now you are ready to contribute to our module. To add new features to our module, write your code under `src/popmessage` directory. The main code of our module is located in `src/popmessage/popmsg.py` file. (see [additional documentation](#-additional-documentation-for-contributors) for contributors below)
 8. Any unit tests you've created should be included within the `tests` directory.
 9. To run the unit tests manually, navigate to the main project directory and run: `python3 -m pytest`
 
-For testing purposes you can follow these steps to build and upload to TestPyPI
+- If the above command throws any error, try `pipenv run python3 -m pytest`, or exit and reactivate your virtual environment and try again.
+
+For testing purposes you can follow these steps to build and upload your enhanced package to TestPyPI:
 
 1. Build the project by running `python -m build` from the same directory where the `pyproject.toml` file is located.
 2. Verify that the built `.tar` archive has the files you expect your package to have (including any important non-code files) by running the command: `tar --list -f dist/popmessage-0.0.3.tar.gz`, where `popmessage-0.0.3` is replaced with your own package name and version.
@@ -219,7 +221,7 @@ Returns the created pop-up window layout.
 
 ## Compatibility Notice
 
-The popmessage package relies on the Kivy library, which may cause compatibility issues on Linux systems.
+The `popmessage` package relies on the Kivy library, which may cause compatibility issues on Linux systems.
 
 ## Teammates
 
