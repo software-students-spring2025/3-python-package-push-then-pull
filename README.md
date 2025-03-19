@@ -56,15 +56,6 @@ To see examples of pop-up messages using PopMessage's functions, please execute 
 pipenv run python demo.py
 ```
 
-## Developer Setup
-
-If you're looking to set up the project locally, follow these steps:
-
-1.
-2.
-3.
-4.
-
 ## Usage
 
 You can easily import PopMessage into your Python project and start using the functions right away. Here's how you can use the package:
