@@ -286,7 +286,7 @@ pipenv shell
 
 Once you make sure all dependencies have been installed, please execute the following command to run PopMessage:
 ```sh
-pipenv run python popmessage.popmsg
+pipenv run python -m popmessage.popmsg
 ```
 
 ## License
