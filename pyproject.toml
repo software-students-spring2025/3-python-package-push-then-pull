@@ -8,8 +8,8 @@ version = "0.0.7"
 authors = [
   { name="Maya Humston", email="mayahumston@gmail.com" },
   { name="Shamaamah Ahmad", email="shamaamah.ahmad@gmail.com" },
-  { name="Jessica Chen", email="author@example.com" },
-  { name="Catherine Huang", email="author@example.com" },
+  { name="Jessica Chen" },
+  { name="Catherine Huang" },
 
 ]
 description = "A package that allows developers to create popup messages to aid in debugging and add some spice into their coding process."

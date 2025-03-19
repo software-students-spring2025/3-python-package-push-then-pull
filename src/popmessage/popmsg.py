@@ -129,6 +129,10 @@ class PopupMessage(App):
         # type checking?
         if not isinstance(msg, str):
             raise TypeError("Custom message must be of type String")
+        if not isinstance(seconds, int):
+            raise TypeError("Timer duration must be of type Int")
+        if seconds < 1:
+            raise ValueError("Timer duration must be at least one second")
         
         # set the properties of the popup
         self._setProperties(msg, bgColor, fontColor, fontSize, seconds)
