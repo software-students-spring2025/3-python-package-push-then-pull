@@ -200,3 +200,32 @@ class Tests:
         # Make sure run and set properties are still being called
         mocker_set_properties.assert_called_once()
         mock_run.assert_called_once()
+
+    def test_timer_incorrect_params(self):
+        
+        # custom message must be String
+        try:
+            pop = PopupMessage()
+            pop.displayTimerPopup(msg=7)
+        except TypeError:
+            assert True 
+        else:
+            assert False
+        
+        # timer duration must be an integer
+        try:
+            pop = PopupMessage()
+            pop.displayTimerPopup(timerSeconds=9.9)
+        except TypeError:
+            assert True 
+        else:
+            assert False
+
+        # timer duration must be >=1
+        try:
+            pop = PopupMessage()
+            pop.displayTimerPopup(timerSeconds=-7)
+        except ValueError:
+            assert True 
+        else:
+            assert False
