@@ -93,7 +93,9 @@ class PopupMessage(App):
         self.run()
     
     def displayTimerPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None, timerSeconds=None):
-        
+        """
+        Function that schedules a popup in a certain (specified or random) number of seconds
+        """
         # set window background to "blank"/default 
         Window.clearcolor = "black"
         Window.size = (100, 100)
@@ -128,6 +130,9 @@ class PopupMessage(App):
         
 
     def _callback(self, dt):
+        """
+        Call back function used to schedule a timed popup
+        """
         # stop the previously called application instance, as the run() method will start another
         stopTouchApp()
         # run the popup
