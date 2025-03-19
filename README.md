@@ -4,6 +4,13 @@
 
 // insert pypi badge [badge](link to workflows)
 
+## Teammates
+
+- [Shamaamah Ahmad](https://github.com/shamaamahh)
+- [Maya Humston](https://github.com/mayhumst)
+- [Jessica Chen](https://github.com/jessicahc)
+- [Catherine Huang](https://github.com/Catherine1342)
+
 ## PyPI Link
 
 [PopMessage on PyPI](link) broken link for now
@@ -268,21 +275,6 @@ Returns the created pop-up window layout.
 ## Compatibility Notice
 
 The `popmessage` package relies on the Kivy library, which may cause compatibility issues on Linux systems.
-
-## Teammates
-
-- [Shamaamah Ahmad](https://github.com/shamaamahh)
-- [Maya Humston](https://github.com/mayhumst)
-- [Jessica Chen](https://github.com/jessicahc)
-- [Catherine Huang](https://github.com/Catherine1342)
-
-## Configuration and Environment Variables
-
-(prob not needed but just here as a placeholder)
-
-## Running the Project
-
-To run PopMessage, please follow these steps:
 
 ## License
 
