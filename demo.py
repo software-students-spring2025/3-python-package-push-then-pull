@@ -30,6 +30,6 @@ myPopup5.displayRandomPopup()
 
 #Example6 timer window
 myPopup6 = PopupMessage()
-myPopup6.displayTimerPopup(msg="Surprise!", bgColor="pink", timerDuration=5)
+myPopup6.displayTimerPopup(msg="Surprise!", bgColor="pink", timerSeconds=5)
 myPopup6 = PopupMessage()
 myPopup6.displayTimerPopup(msg="Randomly generated wait time ...", bgColor=(1, .769, 0, 1))
