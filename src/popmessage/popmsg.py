@@ -4,6 +4,8 @@ from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
 from kivy.core.audio import SoundLoader
 from kivy.clock import Clock
+from kivy.base import runTouchApp
+from kivy.base import stopTouchApp
 import random
 import math
 import time
@@ -93,6 +95,9 @@ class PopupMessage(App):
     
     def displayTimerPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None, timerSeconds=None):
         
+        # set window background to "blank"/default 
+        Window.clearcolor = "black"
+
         # Use default values if parameters are not provided
         if msg is None:
             msg = self._message
@@ -112,10 +117,25 @@ class PopupMessage(App):
         if not isinstance(msg, str):
             raise TypeError("Custom message must be of type String")
         
+        # set the properties of the popup
         self._setProperties(msg, bgColor, fontColor, fontSize, seconds)
-        print('here')
 
-        Clock.schedule_once(self._callback)
+        # schedule the popup to happen in x many seconds
+        Clock.schedule_once(self._callback, seconds)
+
+        # keep the app running so the program doesn't quit before the popup is called
+        runTouchApp()
+        
+
+    def _callback(self, dt):
+        # stop the previously called application instance, as the run() method will start another
+        stopTouchApp()
+        # run the popup
+        self.run()
+        # when exited, the screen will return to blank/default
+        Window.clearcolor = "black"
+        
+     
         
 
     def displaySFPopup(self, code_to_execute):
