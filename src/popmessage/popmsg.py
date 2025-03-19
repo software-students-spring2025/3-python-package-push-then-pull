@@ -3,6 +3,9 @@ from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
 from kivy.core.window import Window
 from kivy.core.audio import SoundLoader
+from kivy.clock import Clock
+from kivy.base import runTouchApp
+from kivy.base import stopTouchApp
 import random
 import math
 import time
@@ -58,6 +61,7 @@ class PopupMessage(App):
             Kivy's abstract method that every child class must implement 
             and gets automatically invoked after App.run() is called.
             """ 
+            Window.size = (1000, 750)
             return self._createPopup()
             
     def _createPopup(self):
@@ -88,8 +92,14 @@ class PopupMessage(App):
         self._setProperties(msg, bgColor, fontColor, fontSize, 0)
         self.run()
     
-    def displayTimerPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None, timerDuration=None):
-        
+    def displayTimerPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None, timerSeconds=None):
+        """
+        Function that schedules a popup in a certain (specified or random) number of seconds
+        """
+        # set window background to "blank"/default 
+        Window.clearcolor = "black"
+        Window.size = (100, 100)
+
         # Use default values if parameters are not provided
         if msg is None:
             msg = self._message
@@ -99,21 +109,37 @@ class PopupMessage(App):
             fontColor = self._fontColor
         if fontSize is None:
             fontSize = self._fontSize
-        if timerDuration is None:
-            seconds = random.randrange(0, 100)
+        if timerSeconds is None:
+            seconds = random.randrange(0, 60)
             print("random time ", seconds)
         else:
-            seconds = math.floor(timerDuration*60)    
+            seconds = timerSeconds
 
         # type checking?
         if not isinstance(msg, str):
             raise TypeError("Custom message must be of type String")
         
+        # set the properties of the popup
         self._setProperties(msg, bgColor, fontColor, fontSize, seconds)
 
-        time.sleep(seconds)
+        # schedule the popup to happen in x many seconds
+        Clock.schedule_once(self._callback, seconds)
 
+        # keep the app running so the program doesn't quit before the popup is called
+        runTouchApp()
+        
+
+    def _callback(self, dt):
+        """
+        Call back function used to schedule a timed popup
+        """
+        # stop the previously called application instance, as the run() method will start another
+        stopTouchApp()
+        # run the popup
         self.run()
+        # when exited, the screen will return to blank/default
+        Window.clearcolor = "black"
+        
 
     def displaySFPopup(self, code_to_execute):
         try:
