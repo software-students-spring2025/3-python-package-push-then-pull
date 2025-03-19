@@ -197,4 +197,6 @@ class Tests:
         sound_args = mock_sound_loader.call_args[0][0]
         assert sound_args in popup.sounds
 
+        # Make sure run and set properties are still being called
+        mocker_set_properties.assert_called_once()
         mock_run.assert_called_once()
