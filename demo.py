@@ -27,6 +27,8 @@ myPopup4.displaySFPopup(lambda: 1 / 0)
 #Example5 random pop-up message window
 myPopup5 = PopupMessage()
 myPopup5.displayRandomPopup()
+myPopup5 = PopupMessage()
+myPopup5.displayRandomPopup()
  
 #Example6 timer window
 myPopup6 = PopupMessage()
