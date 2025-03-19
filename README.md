@@ -26,6 +26,12 @@ Please make sure you have installed
 
 ### Installing in a Seperate Project
 
+To import the PopupMessage module into your project:
+
+```python
+from popmessage.popmsg import PopupMessage
+```
+
 ### Cloning Locally
 
 To clone the repository, please open terminal or command prompt on your system and run:
@@ -56,15 +62,9 @@ To see examples of pop-up messages using PopMessage's functions, please execute 
 pipenv run python demo.py
 ```
 
-## Usage
+## Documentation
 
 You can easily import PopMessage into your Python project and start using the functions right away. Here's how you can use the package:
-
-### Import PopupMessage module:
-
-```python
-from popmessage.popmsg import PopupMessage
-```
 
 ### Constructor
 
