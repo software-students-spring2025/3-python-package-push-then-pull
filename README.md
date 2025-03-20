@@ -29,12 +29,24 @@ Please make sure you have installed
 
 - Python: version 3.10 or higher.
 - Git: To clone the repository.
-- Kivy Dependencies: You many need to install additional dependecies depending on your platform. Please refer to the [Kivy installation guide](https://kivy.org/doc/stable/gettingstarted/installation.html).
+- Kivy: You need to install the Kivy library in order to use our package. Please refer to the [Kivy installation guide](https://kivy.org/doc/stable/gettingstarted/installation.html).
 - Virtual Environment ([pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies)): We recommend you use a virtual environment to run PopMessage to isolate dependencies.
 
-### Installing in a Seperate Project
+### Installing in a Separate Project
 
-To import the PopupMessage module into your project:
+In your active virtual environment, you can download and install the latest version of our package from PyPI by running the command:
+
+```sh
+pipenv install popmessage
+```
+
+You also need to install the Kivy library to use our package. Run the command:
+
+```sh
+pipenv install "kivy[base]"
+```
+
+#### To import the PopupMessage module into your project:
 
 ```python
 from popmessage.popmsg import PopupMessage
