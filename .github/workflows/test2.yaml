@@ -1,13 +1,11 @@
-name: Build and test on mac
+name: Build and test on win
 on:
   push:
     branches: [final_workflow]
-  pull_request:
-    branches: [main]
 
 jobs:
-  build-mac:
-    runs-on: macos-latest
+  build-win:
+    runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
       - name: Install Python, pipenv and Pipfile packages
@@ -20,8 +18,8 @@ jobs:
           pipenv run python -m build .
 
   run_pytest:
-    needs: [build-mac]
-    runs-on: macos-latest
+    needs: [build-win]
+    runs-on: windows-latest
     timeout-minutes: 5
     strategy:
       matrix:
