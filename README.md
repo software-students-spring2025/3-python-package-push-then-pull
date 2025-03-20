@@ -131,7 +131,13 @@ TO ADD
 displaySFPopup(self, code_to_execute)
 ```
 
-This method displays a success or error message depending on the status on your code. If the code runs successfully, a nice comment will be displayed. If the code runs unsuccessfully, a derogatory comment will be displayed.
+This method displays a success or error message depending on the status of your code. If the code runs successfully, a nice comment will be displayed. If the code runs unsuccessfully (throws an exception), a derogatory comment will be displayed.
+
+**Parameters**:
+
+- **code_to_execute**: A lambda function
+
+**Return**: None
 
 ---
 
@@ -174,7 +180,7 @@ TO ADD
 #### 4. Create and display a coding-feedback pop-up message window
 
 ```python
-#Example4 Create and display a debug succes/error message test
+#Example4 Create and display a debug success/error message test
 myPopup4 = PopupMessage()
 myPopup4.displaySFPopup(lambda: print("Code ran successfully!"))
 myPopup4.displaySFPopup(lambda: 5 + 5)
