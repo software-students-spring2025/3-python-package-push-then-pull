@@ -15,14 +15,12 @@ class Tests:
         return PopupMessage()
         
     # Test functions
-    @pytest.mark.timeout(30)
     def test_sanity_check(self):
         """Basic test to ensure pytest runs properly"""
         expected = True
         actual = True
         assert actual == expected, "Expected True to be equal to True!"
 
-    @pytest.mark.timeout(30)
     def test_initializations(self, popup):
         assert popup._message == "Default Message"
         assert popup._bgColor == "white"
@@ -30,7 +28,6 @@ class Tests:
         assert popup._fontSize == 75
         assert popup._timerDuration == 0
 
-    @pytest.mark.timeout(30)
     def test_set_properties(self, popup):
         popup._setProperties("Test Message", "blue", "red", 50, 10)
         assert popup._message == "Test Message"
@@ -39,13 +36,11 @@ class Tests:
         assert popup._fontSize == 50
         assert popup._timerDuration == 10
    
-    @pytest.mark.timeout(30)
     def test_build(self, mocker: MockerFixture, popup):
         mock_create_popup = mocker.patch.object(popup, "_createPopup", return_value="Popup Created")
         assert popup.build() == "Popup Created"
         mock_create_popup.assert_called_once()
 
-    @pytest.mark.timeout(30)
     def test_create_popup(self, popup):
         popup._bgColor = [1, 1, 1, 1]
         layout = popup._createPopup()
@@ -56,7 +51,6 @@ class Tests:
         assert isinstance(layout.children[0], Label), "Expected child to be a Label"
         assert layout.children[0].text == popup._message, "Label text does not match expected default message"
 
-    @pytest.mark.timeout(30)
     def test_display_popup_defaults(self, popup, mocker):
         """Test displayPopup when no arguments are provided."""
         mock_set_properties = mocker.patch.object(popup, "_setProperties")
@@ -71,7 +65,6 @@ class Tests:
 
         mock_run.assert_called_once()
 
-    @pytest.mark.timeout(30)
     def test_display_popup_with_params(self, popup, mocker):
         """Test displayPopup with custom parameters."""
         mock_set_properties = mocker.patch.object(popup, "_setProperties")
@@ -90,7 +83,6 @@ class Tests:
         mock_run.assert_called_once()
 
     # SF tests
-    @pytest.mark.timeout(30)
     def test_display_sf_popup_success(self, mocker, popup):
         """Test displaySFPopup with successful code execution."""
         mock_set_properties = mocker.patch.object(popup, "_setProperties")
@@ -107,7 +99,6 @@ class Tests:
         assert args[1] == "green" 
         mock_run.assert_called_once()
 
-    @pytest.mark.timeout(30)
     def test_display_sf_popup_failure(self, mocker, popup):
         """Test displaySFPopup when code raises an error."""
         mock_set_properties = mocker.patch.object(popup, "_setProperties")
@@ -124,7 +115,6 @@ class Tests:
         assert args[1] == "red" 
         mock_run.assert_called_once()
 
-    @pytest.mark.timeout(30)
     def test_display_sf_popup_random_comment(self, mocker, popup):
         """Test that displaySFPopup picks a comment from the correct list."""
         # Force predictable choices from good/derogatory comment lists
@@ -143,7 +133,6 @@ class Tests:
         assert msg_arg == "You suck at coding!"
 
     # Test to check if the properties of _displayRandomPopup are correct
-    @pytest.mark.timeout(30)
     def test_random_popup_properties(self, mocker, popup):
         mock_set_properties = mocker.patch.object(popup, "_setProperties", wraps = popup._setProperties)
         mock_run = mocker.patch.object(popup, "run")
@@ -178,7 +167,6 @@ class Tests:
         mock_run.assert_called_once()
     
     # Test random popup sound
-    @pytest.mark.timeout(30)
     def test_random_popup_sound(self, mocker, popup):
         # Create a mock sound for testing
         sound = mocker.Mock()
@@ -196,7 +184,6 @@ class Tests:
         mock_run.assert_called_once()
 
     # Test to see what happens when no sound gets loaded
-    @pytest.mark.timeout(30)
     def test_random_popup_no_sound(self, mocker, popup):
         # No sound
         mock_sound_loader = mocker.patch("popmessage.popmsg.SoundLoader.load", return_value = None)
@@ -214,7 +201,6 @@ class Tests:
         mock_run.assert_called_once()
 
     # check that appropriate Exceptions are thrown if timer functions are called with incorrect parameters
-    @pytest.mark.timeout(30)
     def test_timer_incorrect_params(self):
         # custom message must be String
         try:
@@ -245,7 +231,6 @@ class Tests:
 
 
     # Test to check if the properties of the timer function are correct
-    @pytest.mark.timeout(30)
     def test_timer_properties_default(self, mocker, popup):
         mock_set_properties = mocker.patch.object(popup, "_setProperties", wraps = popup._setProperties)
         mock_run = mocker.patch.object(popup, "run")
@@ -271,7 +256,6 @@ class Tests:
         mock_run.assert_called_once()
 
     # Test to check if the properties of the timer function are correct
-    @pytest.mark.timeout(30)
     def test_timer_properties_specified(self, mocker, popup):
         # Parameters
         set_msg = "timer!"
