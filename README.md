@@ -43,7 +43,6 @@ Please make sure you have installed
 - Kivy: You need to install the Kivy library in order to use our package. Please refer to the [Kivy installation guide](https://kivy.org/doc/stable/gettingstarted/installation.html).
 - Virtual Environment ([pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies)): We recommend you use a virtual environment to run PopMessage to isolate dependencies.
 
-
 ### Installing in a Separate Project
 
 In your active virtual environment, you can download and install the latest version of our package from PyPI by running the command:
@@ -136,7 +135,6 @@ This method displays the pop-up message window with customized properties define
 - `bgColor` (str or tuple, optional): The background color in the pop-up window. Defaults to the last configured value.
 - `fontColor` (str or tuple, optional): The text color of the displayed message. Defaults to the last configured value.
 - `fontSize` (int, optional): The font size of the displayed message. Defaults to the last configured value.
-- `timerSeconds` (int, optional): The amount of time, in seconds, to wait before the popup will be shown. Defaults to a random integer between 1 and 60.  
 
 **Return**: None
 
@@ -146,7 +144,7 @@ This method displays the pop-up message window with customized properties define
 displayTimerPopup(self, msg=None, bgColor=None, fontColor=None, fontSize=None, timerSeconds=None)
 ```
 
-This method will display a popup message similar to the previous function, with customizable properties, but will schedule the popup to be executed with a delay. The timer can be used to schedule a popup reminder, or to keep you on your toes when developing. If the timer duration is not specified, the function will randomize a timer duration of up to 60 seconds. If any of the other parameters are not specified, they will default to the last configured value. 
+This method will display a popup message similar to the previous function, with customizable properties, but will schedule the popup to be executed with a delay. The timer can be used to schedule a popup reminder, or to keep you on your toes when developing. If the timer duration is not specified, the function will randomize a timer duration of up to 60 seconds. If any of the other parameters are not specified, they will default to the last configured value.
 
 **Parameters**:
 
@@ -207,7 +205,7 @@ myPopup2.displayPopup(msg="Hello World", bgColor="blue", fontSize=75)
 
 #### 3. Create and display a delayed / timed pop-up message window with customized properties
 
-You can create a delayed popup by invoking the displayTimerPopup() function. Parameters may be specified if desired. If no delay is specified, the timer duration will be randomized. 
+You can create a delayed popup by invoking the displayTimerPopup() function. Parameters may be specified if desired. If no delay is specified, the timer duration will be randomized.
 
 **Note: Be sure to save the instance of PopupMessage() in a variable before invoking this method. If not, unpredictable behavior will occur and the timed function may not be called.**
 
@@ -258,7 +256,7 @@ We welcome contributions! If you'd like to contribute to our package, here's how
 git clone https://github.com/your-username/3-python-package-push-then-pull.git
 ```
 
-4. Go to your cloned project directory, then create and activate a virtual environment with `pipenv`. Regenerate the Pipfile.lock file for your machine specifications. 
+4. Go to your cloned project directory, then create and activate a virtual environment with `pipenv`. Regenerate the Pipfile.lock file for your machine specifications.
 
 ```sh
 pipenv lock
@@ -281,17 +279,18 @@ pipenv install -e .
 ### How to test `popmessage` package
 
 - Our unit test file is `test_popmsg.py`, located in the `tests` directory. You can add more unit test cases in this file.
-- To run the unit test manually, navigate to the main project directory. 
-   - If you are working without a virtual environment, run: `python -m pytest`
-   - If you are working with the `pipenv` virtual environment, run: `pipenv run python -m pytest`
+- To run the unit test manually, navigate to the main project directory.
+  - If you are working without a virtual environment, run: `python -m pytest`
+  - If you are working with the `pipenv` virtual environment, run: `pipenv run python -m pytest`
 
 ### How to build `popmessage` package
 
-Build the project from the root directory where the `pyproject.toml` file is located. 
+Build the project from the root directory where the `pyproject.toml` file is located.
+
 - If you are working without a virtual environment, run: `python -m build`
 - If you are working with the `pipenv` virtual environment, run: `pipenv run python -m build`
 
-Verify that the `dist` directory now contains a wheel and a zipfile with the correct version number in the filename. 
+Verify that the `dist` directory now contains a wheel and a zipfile with the correct version number in the filename.
 
 For your development testing purposes, you can follow this [tutorial](https://packaging.python.org/en/latest/tutorials/packaging-projects/) to use twine to upload the package with your latest changes to TestPyPI.
 
