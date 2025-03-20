@@ -136,7 +136,6 @@ This method displays the pop-up message window with customized properties define
 - `bgColor` (str or tuple, optional): The background color in the pop-up window. Defaults to the last configured value.
 - `fontColor` (str or tuple, optional): The text color of the displayed message. Defaults to the last configured value.
 - `fontSize` (int, optional): The font size of the displayed message. Defaults to the last configured value.
-- `timerSeconds` (int, optional): The amount of time, in seconds, to wait before the popup will be shown. Defaults to a random integer between 1 and 60.  
 
 **Return**: None
 
@@ -154,6 +153,8 @@ This method will display a popup message similar to the previous function, with 
 - `bgColor` (str or tuple, optional): The background color in the pop-up window. Defaults to the last configured value.
 - `fontColor` (str or tuple, optional): The text color of the displayed message. Defaults to the last configured value.
 - `fontSize` (int, optional): The font size of the displayed message. Defaults to the last configured value.
+- `timerSeconds` (int, optional): The amount of time, in seconds, to wait before the popup will be shown. Defaults to a random integer between 1 and 60.  
+
 
 **Return**: None
 
