@@ -24,7 +24,7 @@
 
 ## PyPI Link
 
-[PopMessage on PyPI](link) broken link for now
+[PopMessage on PyPI](https://pypi.org/project/popmessage/1.0.0/)
 
 ## Features
 
