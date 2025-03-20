@@ -5,6 +5,7 @@ from pytest_mock import MockerFixture
 from kivy.core.window import Window
 from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
+import time
 
 class Tests:
 
@@ -201,8 +202,8 @@ class Tests:
         mocker_set_properties.assert_called_once()
         mock_run.assert_called_once()
 
+    # check that appropriate Exceptions are thrown if timer functions are called with incorrect parameters
     def test_timer_incorrect_params(self):
-        
         # custom message must be String
         try:
             pop = PopupMessage()
@@ -229,3 +230,66 @@ class Tests:
             assert True 
         else:
             assert False
+
+
+    # Test to check if the properties of the timer function are correct
+    def test_timer_properties_default(self, mocker, popup):
+        mock_set_properties = mocker.patch.object(popup, "_setProperties", wraps = popup._setProperties)
+        mock_run = mocker.patch.object(popup, "run")
+        popup.displayTimerPopup(timerSeconds=5)
+
+        # Get the popup properties
+        msg_args, _ = mock_set_properties.call_args
+        msg = msg_args[0]
+        bgColor = msg_args[1]
+        fontColor = msg_args[2]
+        fontSize = msg_args[3]
+        timerDuration = msg_args[4]
+
+        # Check properties (default for all)
+        assert msg == "Default Message"
+        assert bgColor == "white"
+        assert fontColor == "black"
+        assert fontSize == 75
+        assert timerDuration > 0
+        assert timerDuration <=60
+
+        # ensure popup has been run 
+        mock_run.assert_called_once()
+
+    # Test to check if the properties of the timer function are correct
+    def test_timer_properties_specified(self, mocker, popup):
+        # Parameters
+        set_msg = "timer!"
+        set_bg = "red"
+        set_font = "blue"
+        set_size = 30
+        set_timer = 5
+
+        mock_set_properties = mocker.patch.object(popup, "_setProperties", wraps = popup._setProperties)
+        mock_run = mocker.patch.object(popup, "run")
+        start = time.perf_counter()
+        popup.displayTimerPopup(set_msg, set_bg, set_font, set_size, set_timer)
+        end = time.perf_counter()
+
+        # Get the popup properties
+        msg_args, _ = mock_set_properties.call_args
+        msg = msg_args[0]
+        bgColor = msg_args[1]
+        fontColor = msg_args[2]
+        fontSize = msg_args[3]
+        timerDuration = msg_args[4]
+
+        # Check properties (default for all)
+        assert msg == set_msg
+        assert bgColor == set_bg
+        assert fontColor == set_font
+        assert fontSize == set_size
+        assert timerDuration == 5
+
+        # Time elapsed for popup function call should be ABOUT five seconds
+        assert (end - start) > 4.9
+        assert (end - start) < 5.1
+
+        # ensure popup has been run 
+        mock_run.assert_called_once()
