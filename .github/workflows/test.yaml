@@ -29,8 +29,9 @@ jobs:
       - name: Build App
         run: |
           python -m build
-            
-      - name: Test App
+      - name: Install local package
         run: |
           python -m pip install dist/popmessage-1.0.0-py3-none-any.whl
+      - name: Test App
+        run: |
           python -m pytest
