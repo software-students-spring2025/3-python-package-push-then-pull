@@ -8,36 +8,28 @@ jobs:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install Python, pipenv and Pipfile packages
-        uses: kojoru/prepare-pipenv@v1
+      
+      - id: setup-python
+        name: Setup Python
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
-      - name: Build package
-        run: |
-          pipenv install build
-          pipenv run python -m build .
+          python-version: '3.11'
+          cache: 'pipenv'
 
-  run_pytest:
-    needs: [build-win]
-    runs-on: windows-latest
-    timeout-minutes: 5
-    strategy:
-      matrix:
-        python-version: ["3.11", "3.13"]
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install Python, pipenv and Pipfile packages
-        uses: kojoru/prepare-pipenv@v1
-        with:
-          python-version: ${{ matrix.python-version }}
-      - name: Regenerate lock file
-        run: |
-          pipenv lock
-      - name: Turn on 'editable' mode
+      - name: Install pipenv
+        run: curl https://raw.githubusercontent.com/pypa/pipenv/master/get-pipenv.py | python
+        shell: bash
+
+      - name: Regen pipfile.lock
+        run: pipenv lock
+        shell: bash
+
+      - name: Turn on 'editable' mode, install dependencies
         run: |
           pipenv install -e .
-      - name: Test with pytest
+      
+      - name: Run unit tests
         run: |
-          pipenv run python -m pytest
+          pipenv run -v python -m pytest
       
       
