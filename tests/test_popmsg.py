@@ -99,7 +99,6 @@ class Tests:
         assert args[1] == "green" 
         mock_run.assert_called_once()
 
-
     def test_display_sf_popup_failure(self, mocker, popup):
         """Test displaySFPopup when code raises an error."""
         mock_set_properties = mocker.patch.object(popup, "_setProperties")
@@ -115,7 +114,6 @@ class Tests:
         args = mock_set_properties.call_args[0]
         assert args[1] == "red" 
         mock_run.assert_called_once()
-
 
     def test_display_sf_popup_random_comment(self, mocker, popup):
         """Test that displaySFPopup picks a comment from the correct list."""

@@ -1,11 +1,13 @@
-name: Build and test the package
+name: Build and test on mac
 on:
+  push:
+    branches: [final_workflow]
   pull_request:
     branches: [main]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
+  build-mac:
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
       - name: Install Python, pipenv and Pipfile packages
@@ -18,12 +20,12 @@ jobs:
           pipenv run python -m build .
 
   run_pytest:
-    needs: [build]
-    runs-on: ubuntu-latest
+    needs: [build-mac]
+    runs-on: macos-latest
     timeout-minutes: 5
     strategy:
       matrix:
-        python-version: ["3.11", "3.13"]
+        python-version: ["3.11"]
     steps:
       - uses: actions/checkout@v4
       - name: Install Python, pipenv and Pipfile packages
@@ -36,6 +38,13 @@ jobs:
       - name: Turn on 'editable' mode
         run: |
           pipenv install -e .
+      
+      - name: show dependencies
+        run: |
+          pipenv run pip list
+          echo "****************"
+          pipenv graph
+            
       - name: Test with pytest
         run: |
           pipenv run python -m pytest
