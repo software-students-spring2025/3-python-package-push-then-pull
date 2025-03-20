@@ -27,6 +27,7 @@ jobs:
       - name: Turn on 'editable' mode, install dependencies
         run: |
           pipenv install -e .
+          pipenv run pip install kivy pygame
       
       - name: Run unit tests
         run: |

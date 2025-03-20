@@ -38,6 +38,8 @@ jobs:
       - name: Turn on 'editable' mode
         run: |
           pipenv install -e .
+          pipenv run pip install kivy
+          pipenv install kivy pygame
       - name: Test with pytest
         run: |
           pipenv run python -m pytest
