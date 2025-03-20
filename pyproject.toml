@@ -19,7 +19,7 @@ requires-python = ">=3.10"
 dependencies = [
   "kivy[base]",
   "kivy_examples",
-  "pytest"
+  "pytest",
 ]
 classifiers = [
     "Programming Language :: Python :: 3",

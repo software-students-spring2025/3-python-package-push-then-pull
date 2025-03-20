@@ -1,8 +1,8 @@
 # PopMessage
 
-**PopMessage** is a Python package that enhances your development process with customizable pop-up messages. It allows you to display reminders, debug feedback, and fun surprises through pop-ups with random colors and sounds. With timer functionality, you can set delays for reminders, while error and debug pop-ups provide real-time feedback on your code. Whether you need a moment of wholesome encouragement or a playful surprise, PopMessage adds a unique touch to your coding experience.
+![Python build & test](https://github.com/software-students-spring2025/3-python-package-push-then-pull/actions/workflows/build_and_test.yml/badge.svg)
 
-// insert pypi badge [badge](link to workflows)
+**PopMessage** is a Python package that enhances your development process with customizable pop-up messages. It allows you to display reminders, debug feedback, and fun surprises through pop-ups with random colors and sounds. With timer functionality, you can set delays for reminders, while error and debug pop-ups provide real-time feedback on your code. Whether you need a moment of wholesome encouragement or a playful surprise, PopMessage adds a unique touch to your coding experience.
 
 ## Table of Contents
 

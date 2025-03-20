@@ -1,2 +1,2 @@
-kivy[base]
+kivy
 kivy-examples
