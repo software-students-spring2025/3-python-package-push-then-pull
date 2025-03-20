@@ -38,8 +38,9 @@ jobs:
       - name: Turn on 'editable' mode
         run: |
           pipenv install -e .
-          pipenv run pip install -r r.txt
-          pipenv install kivy pygame
+      - name: missing dependencies?
+        run: | 
+          pipenv run pip install kivy-deps.sdl2 kivy-deps.angle kivy-deps.glew
       - name: show dependencies
         run: |
           pipenv run pip list
