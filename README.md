@@ -244,8 +244,7 @@ Build the project by running `python -m build` from the same directory where the
 
 ---
 
-**Note**
-The `popmessage` package has been manually tested with Python 3.10, 3.12, and 3.13 on MacOS, Windows, and Linux. Because this package relies on the Kivy library which requires graphical libraries available on each OS, if you experience any compatibility issues on your local machine, please refer to [Kivy official website](https://kivy.org/).
+**Note:** The `popmessage` package has been manually tested with Python 3.10, 3.12, and 3.13 on MacOS, Windows, and Linux. Because this package relies on the Kivy library which requires graphical libraries available on each OS, if you experience any compatibility issues on your local machine, please refer to [Kivy official website](https://kivy.org/).
 
 ## License
 
