@@ -214,6 +214,8 @@ myPopup5.displayRandomPopup()
 
 Link to a sample program: [demo.py](https://github.com/software-students-spring2025/3-python-package-push-then-pull/blob/main/demo.py)
 
+Note: Due Kivy library's limitation, although multiple windows are created in this program, only one pop-up window is displayed at a time. The user must close the existing pop-up window displayed to view the next pop-up window.
+
 ## Contributing
 
 We welcome contributions! If you'd like to contribute to our package, here's how to set up your development environment:
