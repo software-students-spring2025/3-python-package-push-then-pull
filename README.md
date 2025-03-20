@@ -239,7 +239,7 @@ pipenv install -e .
 7. Check Pipfile to verify all the dependencies are installed.
 8. Create a new branch in your local repository.
 9. Now you are ready to contribute to our module. To add new features to our module, write your code under `src/popmessage` directory. The main code of our module is located in `src/popmessage/popmsg.py` file.
-10. Add unit tests for any new functions you've added to the module. To run the unit tests see the "[How to test popmessage package](#how-to-test-popmessage-package)" section.
+10. Add unit tests for any new functions you've added to the module. To run the unit tests see the [How to test popmessage package](#how-to-test-popmessage-package) section.
 11. Make sure the version number in pyproject.toml or anywhere else it is mentioned is updated before you are ready to push your new changes.
 12. Before committing your changes, pull the latest changes from the upstream repository, and merge them into your local branch.
 13. Once you are satisfied with your changes, add and commit your changes. Push your changes to your remote repository on GitHub.
