@@ -40,6 +40,12 @@ jobs:
           pipenv install -e .
           pipenv run pip install kivy
           pipenv install kivy pygame
+      - name: show dependencies
+        run: |
+          pipenv run pip list
+          echo "****************"
+          pipenv graph
+            
       - name: Test with pytest
         run: |
           pipenv run python -m pytest
