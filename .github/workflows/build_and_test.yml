@@ -7,7 +7,7 @@ on:
 
 jobs:
   build:
-    runs-on: mac-latest
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
       - name: Install Python, pipenv and Pipfile packages
@@ -21,7 +21,7 @@ jobs:
 
   run_pytest:
     needs: [build]
-    runs-on: mac-latest
+    runs-on: macos-latest
     timeout-minutes: 5
     strategy:
       matrix:
