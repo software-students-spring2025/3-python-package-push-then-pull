@@ -26,10 +26,11 @@
 ## Installation
 
 Please make sure you have installed
- - Python: version 3.10 or higher.
- - Git: To clone the repository.
- - Kivy Dependencies: You many need to install additional dependecies depending on your platform. Please refer to the [Kivy installation guide](https://kivy.org/doc/stable/gettingstarted/installation.html).
- - Virtual Environment ([pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies)): We recommend you use a virtual environment to run PopMessage to isolate dependencies.
+
+- Python: version 3.10 or higher.
+- Git: To clone the repository.
+- Kivy Dependencies: You many need to install additional dependecies depending on your platform. Please refer to the [Kivy installation guide](https://kivy.org/doc/stable/gettingstarted/installation.html).
+- Virtual Environment ([pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies)): We recommend you use a virtual environment to run PopMessage to isolate dependencies.
 
 ### Installing in a Seperate Project
 
@@ -42,16 +43,19 @@ from popmessage.popmsg import PopupMessage
 ### Cloning Locally
 
 To clone the repository, please open terminal or command prompt on your system and run:
+
 ```sh
 git clone https://github.com/software-students-spring2025/3-python-package-push-then-pull.git
 cd 3-python-package-push-then-pull
 
 ```
+
 #### Setup a Virtual Environment
 
 We recommend you use a virtual environment when running PopMessage. To do so:
 
 Run this command in your terminal or command prompt when you are in the cloned repository:
+
 ```sh
 pipenv shell
 ```
@@ -59,12 +63,15 @@ pipenv shell
 #### Running PopMessage
 
 Once you make sure all dependencies have been installed, please execute the following command to run PopMessage:
+
 ```sh
 pipenv run python -m popmessage.popmsg
 ```
+
 Please note executing this command won't do anything as no functions from the package will be called.
 
 To see examples of pop-up messages using PopMessage's functions, please execute the following command:
+
 ```sh
 pipenv run python demo.py
 ```
@@ -76,18 +83,18 @@ You can easily import PopMessage into your Python project and start using the fu
 ### Constructor
 
 ```python
-__init__(self)
+PopupMessage()
 ```
 
-Constructs an instance of the `PopupMessage` class which represents a pop-up message window. It initializes instance variables with default properties for the pop-up message window. Developers who want to create an instance of `PopupMessage` class should call `PopupMessage()`.
+Constructs an instance of the `PopupMessage` class which represents a pop-up message window. It initializes instance variables with default properties for the pop-up message window. To display a popup message window, you must first create an instance of `PopupMessage` class by calling this constructor.
 
 Upon instantiation, each PopupMessage object has the following properties with default values:
 
-- **message**: The message to be displayed in the pop-up window. Defaults to "Default Message"
-- **bgColor**: The background color in the pop-up window.Defaults to "white".
-- **fontColor**: The text color of the displayed message. Defaults to "black".
-- **fontSize**: The font size of the displayed message. Defaults to 75.
-- **timerDuration**: The number of minutes before the pop-up window gets displayed. Defaults to 0.
+- `message`: The message to be displayed in the pop-up window. Defaults to "Default Message"
+- `bgColor`: The background color in the pop-up window. Defaults to "white".
+- `fontColor`: The text color of the displayed message. Defaults to "black".
+- `fontSize`: The font size of the displayed message. Defaults to 75.
+- `timerDuration`: The number of minutes before the pop-up window gets displayed. Defaults to 0.
 
 **Parameters**: None
 
@@ -103,10 +110,10 @@ This method displays the pop-up message window with customized properties define
 
 **Parameters**:
 
-- **message** (str, optional): The message to be displayed in the pop-up window. Defaults to the last configured value.
-- **bgColor** (str or tuple, optional): The background color in the pop-up window.Defaults to the last configured value.
-- **fontColor** (str or tuple, optional): The text color of the displayed message. Defaults to the last configured value.
-- **fontSize** (int, optional): The font size of the displayed message. Defaults to the last configured value.
+- `msg` (str, optional): The message to be displayed in the pop-up window. Defaults to the last configured value.
+- `bgColor` (str or tuple, optional): The background color in the pop-up window. Defaults to the last configured value.
+- `fontColor` (str or tuple, optional): The text color of the displayed message. Defaults to the last configured value.
+- `fontSize` (int, optional): The font size of the displayed message. Defaults to the last configured value.
 
 **Return**: None
 
@@ -124,7 +131,13 @@ TO ADD
 displaySFPopup(self, code_to_execute)
 ```
 
-This method displays a success or error message depending on the status on your code. If the code runs successfully, a nice comment will be displayed. If the code runs unsuccessfully, a derogatory comment will be displayed.
+This method displays a success or error message depending on the status of your code. If the code runs successfully, a nice comment will be displayed. If the code runs unsuccessfully (throws an exception), a derogatory comment will be displayed.
+
+**Parameters**:
+
+- `code_to_execute`: A lambda function
+
+**Return**: None
 
 ---
 
@@ -164,10 +177,10 @@ myPopup2.displayPopup(msg="Hello World", bgColor="blue", fontSize=75)
 
 TO ADD
 
-#### 4. Create and display a coding-feedback pop-up message window 
+#### 4. Create and display a coding-feedback pop-up message window
 
 ```python
-#Example4 Create and display a debug succes/error message test
+#Example4 Create and display a debug success/error message test
 myPopup4 = PopupMessage()
 myPopup4.displaySFPopup(lambda: print("Code ran successfully!"))
 myPopup4.displaySFPopup(lambda: 5 + 5)
@@ -185,16 +198,29 @@ myPopup5 = PopupMessage()
 myPopup5.displayRandomPopup()
 ```
 
-Link to an example Python program using our package: [demo.py](https://github.com/software-students-spring2025/3-python-package-push-then-pull/blob/main/demo.py)
+#### 6. Sample program
+
+Link to a sample program: [demo.py](https://github.com/software-students-spring2025/3-python-package-push-then-pull/blob/main/demo.py)
 
 ## Contributing
 
 We welcome contributions! If you'd like to contribute to our package, here's how to set up your development environment:
 
 1. This module requires Python version 3.10 or higher. Install Python and [pipenv](https://packaging.python.org/en/latest/tutorials/managing-dependencies/#managing-dependencies) if not already installed.
-2. Clone our git repository to your local machine. Run `git clone https://github.com/software-students-spring2025/3-python-package-push-then-pull.git`
-3. Go to your cloned project directory, then create and activate a virtual environment: `pipenv shell`
-4. Inside your active virtual environment, install the following dependencies by running these commands:
+2. Create a fork of our repository by clicking on the Fork button at the top-right corner of the repository page.
+3. Clone your fork of our repository to your computer.
+
+```sh
+git clone https://github.com/your-username/3-python-package-push-then-pull.git
+```
+
+4. Go to your cloned project directory, then create and activate a virtual environment:
+
+```sh
+pipenv shell
+```
+
+5. Inside your active virtual environment, install the following dependencies by running these commands:
 
    ```sh
    pipenv install kivy
@@ -204,77 +230,34 @@ We welcome contributions! If you'd like to contribute to our package, here's how
    pipenv install twine
    ```
 
-5. For development purposes, install the package in "_editable_" mode so that changes to the package are immediately updated in the virtual environment.
+6. For development purposes, install the package in "_editable_" mode so that changes to the package are immediately updated in the virtual environment. Run the following command in the main package directory:
 
-- Run `pipenv install -e .` from the main project directory.
+```sh
+pipenv install -e .
+```
 
-6. Check Pipfile to verify all the dependencies are installed. Make sure python_version is the 3.10 or above.
-7. Now you are ready to contribute to our module. To add new features to our module, write your code under `src/popmessage` directory. The main code of our module is located in `src/popmessage/popmsg.py` file. (see [additional documentation](#-additional-documentation-for-contributors) for contributors below)
-8. Any unit tests you've created should be included within the `tests` directory.
-9. To run the unit tests manually, navigate to the main project directory and run: `python3 -m pytest`
+7. Check Pipfile to verify all the dependencies are installed.
+8. Create a new branch in your local repository.
+9. Now you are ready to contribute to our module. To add new features to our module, write your code under `src/popmessage` directory. The main code of our module is located in `src/popmessage/popmsg.py` file.
+10. Add unit tests for any new functions you've added to the module. To run the unit tests see the [How to test popmessage package](#how-to-test-popmessage-package) section.
+11. Make sure the version number in pyproject.toml or anywhere else it is mentioned is updated before you are ready to push your new changes.
+12. Before committing your changes, pull the latest changes from the upstream repository, and merge them into your local branch.
+13. Once you are satisfied with your changes, add and commit your changes. Push your changes to your remote repository on GitHub.
+14. Go to the original repository. Select your branch and submit a Pull Request (PR) for review. One of the maintainers of the repository will review your pull request. If approved, your latest code changes will be uploaded to PyPI by the maintainer.
 
+### How to test `popmessage` package
+
+- Our unit test file is `test_popmsg.py`, located in the `tests` directory. You can add more unit test cases in this file.
+- To run the unit test manually, navigate to the main project directory and run: `python3 -m pytest`
 - If the above command throws any error, try `pipenv run python3 -m pytest`, or exit and reactivate your virtual environment and try again.
 
-For testing purposes you can follow these steps to build and upload your enhanced package to TestPyPI:
+### How to build `popmessage` package
 
-1. Build the project by running `python -m build` from the same directory where the `pyproject.toml` file is located.
-2. Verify that the built `.tar` archive has the files you expect your package to have (including any important non-code files) by running the command: `tar --list -f dist/popmessage-0.0.3.tar.gz`, where `popmessage-0.0.3` is replaced with your own package name and version.
-3. Create an account on [TestPyPI](https://test.pypi.org/) where one can upload to a test repository instead of the production PyPI repo.
-4. Create a [new API token](https://test.pypi.org/manage/account/#api-tokens) on TestPyPI with the "Scope" set to “Entire account”. Save a copy of the token somewhere safe.
-5. [Upload your package](popmessage) to the TestPyPI repository using twine, e.g. `twine upload -r testpypi dist/*`
-6. Twine will output the URL of your package on the PyPI website - load that URL in your web browser to see your packaged published
-
-Every time you change the code in your package, you will need to rebuild and reupload it to PyPI. You will need to build from a clean slate and update the version number to achieve this:
-
-1. delete the autogenerated `dist` directory
-2. delete the autogenerated `src/*.egg-info` directory
-3. update the version number in `pyproject.toml` and anywhere else it is mentioned (do a find/replace) (e.g., from 0.0.3 to 0.0.4)
-4. build the package again with `python -m build`
-5. upload the package again with `twine upload -r testpypi dist/*`
-
-Repeat as many times as necessary until the package works as expected.
-
-Once you are satisfied with your changes, you are now ready to push your changes.
-
-1. Before pushing your changes, make sure the version number in pyproject.toml or anywhere else it is mentioned is updated.
-2. Now you can push your changes to your branch in the Github repository.
-3. Once you submit a pull request, this will trigger GitHub Actions to run the automated unit tests. One of the maintainers of the repository will review your pull request. If approved, your latest code changes will be uploaded to the real PyPI by the maintainer.
-
-### Additional Documentation for Contributors
-
-PopupMessage class is a subclass of kivy.app.App class. The following methods are located in PopupMessage and can be enhanced by contributors.
-
-```python
-_setProperties(msg, bgColor, fontColor, fontSize, timerDuration)
-```
-
-A protected method that sets the properties of the pop-up message window.
+Build the project by running `python -m build` from the same directory where the `pyproject.toml` file is located. For your development testing purposes, you can follow this [tutorial](https://packaging.python.org/en/latest/tutorials/packaging-projects/) to use twine to upload the package with your latest changes to TestPyPI.
 
 ---
 
-```python
-_createPopup(self)
-```
-
-A protected method that creates the pop-up message window with the configured properties.
-
-Returns the layout for rendering.
-
----
-
-```python
-build(self)
-```
-
-Kivy's abstract method that every subclass must implement and gets automatically invoked after App.run() is called.
-
-Returns the created pop-up window layout.
-
----
-
-## Compatibility Notice
-
-The `popmessage` package relies on the Kivy library, which may cause compatibility issues on Linux systems.
+**Note:** The `popmessage` package has been manually tested with Python 3.10, 3.12, and 3.13 on MacOS, Windows, and Linux. Because this package relies on the Kivy library which requires graphical libraries available on the local OS, if you experience any compatibility issues on your local machine, please refer to [Kivy official website](https://kivy.org/).
 
 ## License
 
