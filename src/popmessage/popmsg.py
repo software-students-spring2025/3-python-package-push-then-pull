@@ -7,8 +7,6 @@ from kivy.clock import Clock
 from kivy.base import runTouchApp
 from kivy.base import stopTouchApp
 import random
-import math
-import time
 import os
 
 class PopupMessage(App):
@@ -121,7 +119,7 @@ class PopupMessage(App):
         if fontSize is None:
             fontSize = self._fontSize
         if timerSeconds is None:
-            seconds = random.randrange(0, 60)
+            seconds = random.randrange(1, 60)
             print("random time ", seconds)
         else:
             seconds = timerSeconds
