@@ -10,6 +10,7 @@ build = "*"
 pytest = "*"
 pytest_mock = "*"
 popmessage = {file = ".", editable = true}
+twine = "*"
 
 [dev-packages]
 pytest = "*"
