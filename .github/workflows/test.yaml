@@ -28,11 +28,9 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pytest build pytest_mock pygame
           python -m pip install "kivy[base]"
-      - name: show dependencies
+      - name: get ALL dependencies
         run: |
-          python -m pip list
-          echo "****************"
-          
+          python -m pip install -r r.txt
       - name: Build App
         run: |
           python -m build
