@@ -30,17 +30,16 @@ jobs:
         run: |
           pipenv install -e .
           pipenv run pip install kivy pygame
+        shell: bash
 
       - name: check installed dependencies
         run: |
           pipenv run pip list
-
-      - name: install kivy-deps
-        run: |
-          pipenv run pip install kivy-deps.sdl2
+        shell: bash
       
       - name: Run unit tests
         run: |
           pipenv run python -m pytest
+        shell: bash
       
       
