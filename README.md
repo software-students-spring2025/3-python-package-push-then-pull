@@ -90,11 +90,11 @@ Constructs an instance of the `PopupMessage` class which represents a pop-up mes
 
 Upon instantiation, each PopupMessage object has the following properties with default values:
 
-- **message**: The message to be displayed in the pop-up window. Defaults to "Default Message"
-- **bgColor**: The background color in the pop-up window. Defaults to "white".
-- **fontColor**: The text color of the displayed message. Defaults to "black".
-- **fontSize**: The font size of the displayed message. Defaults to 75.
-- **timerDuration**: The number of minutes before the pop-up window gets displayed. Defaults to 0.
+- `message`: The message to be displayed in the pop-up window. Defaults to "Default Message"
+- `bgColor`: The background color in the pop-up window. Defaults to "white".
+- `fontColor`: The text color of the displayed message. Defaults to "black".
+- `fontSize`: The font size of the displayed message. Defaults to 75.
+- `timerDuration`: The number of minutes before the pop-up window gets displayed. Defaults to 0.
 
 **Parameters**: None
 
@@ -110,10 +110,10 @@ This method displays the pop-up message window with customized properties define
 
 **Parameters**:
 
-- **message** (str, optional): The message to be displayed in the pop-up window. Defaults to the last configured value.
-- **bgColor** (str or tuple, optional): The background color in the pop-up window.Defaults to the last configured value.
-- **fontColor** (str or tuple, optional): The text color of the displayed message. Defaults to the last configured value.
-- **fontSize** (int, optional): The font size of the displayed message. Defaults to the last configured value.
+- `msg` (str, optional): The message to be displayed in the pop-up window. Defaults to the last configured value.
+- `bgColor` (str or tuple, optional): The background color in the pop-up window. Defaults to the last configured value.
+- `fontColor` (str or tuple, optional): The text color of the displayed message. Defaults to the last configured value.
+- `fontSize` (int, optional): The font size of the displayed message. Defaults to the last configured value.
 
 **Return**: None
 
@@ -135,7 +135,7 @@ This method displays a success or error message depending on the status of your 
 
 **Parameters**:
 
-- **code_to_execute**: A lambda function
+- `code_to_execute`: A lambda function
 
 **Return**: None
 
@@ -198,7 +198,9 @@ myPopup5 = PopupMessage()
 myPopup5.displayRandomPopup()
 ```
 
-Link to an example Python program using our package: [demo.py](https://github.com/software-students-spring2025/3-python-package-push-then-pull/blob/main/demo.py)
+#### 6. Sample program
+
+Link to a sample program: [demo.py](https://github.com/software-students-spring2025/3-python-package-push-then-pull/blob/main/demo.py)
 
 ## Contributing
 
@@ -212,7 +214,12 @@ We welcome contributions! If you'd like to contribute to our package, here's how
 git clone https://github.com/your-username/3-python-package-push-then-pull.git
 ```
 
-4. Go to your cloned project directory, then create and activate a virtual environment: `pipenv shell`
+4. Go to your cloned project directory, then create and activate a virtual environment:
+
+```sh
+pipenv shell
+```
+
 5. Inside your active virtual environment, install the following dependencies by running these commands:
 
    ```sh
@@ -229,18 +236,18 @@ git clone https://github.com/your-username/3-python-package-push-then-pull.git
 pipenv install -e .
 ```
 
-7. Check Pipfile to verify all the dependencies are installed. Make sure python_version is the 3.10 or above.
-8. Create a new branch in your local repository. Replace `feature-branch` with an appropriate name for your branch.
+7. Check Pipfile to verify all the dependencies are installed.
+8. Create a new branch in your local repository.
 9. Now you are ready to contribute to our module. To add new features to our module, write your code under `src/popmessage` directory. The main code of our module is located in `src/popmessage/popmsg.py` file.
-10. Add unit tests for any new functions you've added to the module. To run the unit tests see the [below section](#how-to-test-popmessage-package).
+10. Add unit tests for any new functions you've added to the module. To run the unit tests see the [section below](#how-to-test-popmessage-package).
 11. Make sure the version number in pyproject.toml or anywhere else it is mentioned is updated before you are ready to push your new changes.
 12. Before committing your changes, pull the latest changes from the upstream repository, and merge them into your local branch.
 13. Once you are satisfied with your changes, add and commit your changes. Push your changes to your remote repository on GitHub.
-14. Go to the original repository. Select your branch and submit a Pull Request (PR) for review. One of the maintainers of the repository will review your pull request. If approved, your latest code changes will be uploaded to the real PyPI by the maintainer.
+14. Go to the original repository. Select your branch and submit a Pull Request (PR) for review. One of the maintainers of the repository will review your pull request. If approved, your latest code changes will be uploaded to PyPI by the maintainer.
 
 ### How to test `popmessage` package
 
-- Our unit test file `test_popmsg.py`, located in the `tests` directory. You can add more unit test cases in this file.
+- Our unit test file is `test_popmsg.py`, located in the `tests` directory. You can add more unit test cases in this file.
 - To run the unit test manually, navigate to the main project directory and run: `python3 -m pytest`
 - If the above command throws any error, try `pipenv run python3 -m pytest`, or exit and reactivate your virtual environment and try again.
 
@@ -250,7 +257,7 @@ Build the project by running `python -m build` from the same directory where the
 
 ---
 
-**Note:** The `popmessage` package has been manually tested with Python 3.10, 3.12, and 3.13 on MacOS, Windows, and Linux. Because this package relies on the Kivy library which requires graphical libraries available on each OS, if you experience any compatibility issues on your local machine, please refer to [Kivy official website](https://kivy.org/).
+**Note:** The `popmessage` package has been manually tested with Python 3.10, 3.12, and 3.13 on MacOS, Windows, and Linux. Because this package relies on the Kivy library which requires graphical libraries available on the local OS, if you experience any compatibility issues on your local machine, please refer to [Kivy official website](https://kivy.org/).
 
 ## License
 
